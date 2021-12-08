@@ -206,9 +206,6 @@ class CompanyController extends Controller
     public function getCompanyBranches($id)
     {
         $branches = Branch::where('company_id', $id)->get();
-        if (count($branches) == 0) {
-            return redirect()->back()->with('warning', 'company has no branch');
-        }
         if ($branches) {
             $company = company::where('id', $id)->first();
             return view('branch.branches', compact('branches', 'company'));

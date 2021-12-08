@@ -26,23 +26,27 @@
                          <div class="table-responsive">
                              <table class="table table-striped" id="example" class="display">
                                  <tr>
-                                     <th class="px-4 py-3">Company Name</th>
-                                     <th class="px-4 py-3">Company Status</th>
-                                     <th class="px-4 py-3">Company Location</th>
-                                     <th class="px-4 py-3">Owner Names</th>
-                                     <th class="px-4 py-3">Owner Email</th>
-                                     <th class="px-4 py-3">Owner Phone Number</th>
-                                     <th class="px-4 py-3">Owner Gender</th>
-                                     <th class="px-4 py-3">Owner Dob</th>
-                                     <th class="px-4 py-3">Owner Status</th>
-                                     <th class="px-4 py-3">Actions</th>
+                                 <th class="px-4 py-3 text-base">#</th>
+                                     <th class="px-4 py-3 text-base">Company Name</th>
+                                     <th class="px-4 py-3 text-base">Company Status</th>
+                                     <th class="px-4 py-3 text-base">Company Location</th>
+                                     <th class="px-4 py-3 text-base">Owner Names</th>
+                                     <th class="px-4 py-3 text-base">Owner Email</th>
+                                     <th class="px-4 py-3 text-base">Owner Phone Number</th>
+                                     <th class="px-4 py-3 text-base">Owner Gender</th>
+                                     <th class="px-4 py-3 text-base">Owner Dob</th>
+                                     <th class="px-4 py-3 text-base">Owner Status</th>
+                                     <th class="px-4 py-3 text-base">Actions</th>
                                  </tr>
                                  @forelse ($companies as $company)
                                  <tr>
-                                     <td class="align-middle">
+                                 <td class="align-middle px-4 text-base">
+                                         {{$company->id}}
+                                     </td>
+                                     <td class="align-middle px-8 text-base">
                                          {{$company->name}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-base">
                                          <a href="{{route('changeCompanyStatus',$company->id)}}" @if($company->status == 'active')
                                              class="badge badge-success">{{$company->status}}
                                              @else
@@ -50,26 +54,26 @@
                                              @endif
                                          </a>
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-base">
                                          {{$company->location}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4">
                                          {{$company->user->firstName}} {{$company->user->lastName}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-base">
                                          {{$company->user->email}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-base">
                                          {{$company->user->phoneNumber}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-base">
                                          {{$company->user->gender}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-12 text-base">
                                          {{$company->user->dob}}
                                      </td>
 
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-base">
 
                                          <div class="flex items-center space-x-4 text-sm">
 
@@ -81,7 +85,7 @@
                                              </a>
                                          </div>
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle text-base">
 
                                          <div class="dropdown">
                                              <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle">Options</a>
@@ -110,10 +114,11 @@
                  </div>
              </div>
          </div>
-         <script>
-             $(document).ready(function() {
-                 $('#example').DataTable();
-             });
-         </script>
+         <script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
 
          @endsection
+         

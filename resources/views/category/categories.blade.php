@@ -1,3 +1,4 @@
+
  @extends('layouts.header')
 
  @section('content')
@@ -14,37 +15,39 @@
                  @endif
                  @endforeach
 
-                 <div class="card">
-                     <div class="card-header d-flex justify-content-between">
-                         <h4>List of Categories</h4>
-                         <div style="float:right; position: relative;">
-                             <a style="align-items: right;" href="{{route('getAddCategory')}}" class="btn btn-outline-primary">Register Category</a>
-                         </div>
+                 <div class=" d-flex justify-content-between py-4">
+                         <h4 class="flex justify-center text-2xl font-bold text-blue-500 px-12">List of Categories</h4>
+                         <!-- <div style="float:right; position: relative;">
+                             <a style="align-items: right;" href="{{route('getAddCategory')}}" class="py-2 bg-blue-700 text-xl text-white rounded px-2">Register Category</a>
+                         </div> -->
+                         
                      </div>
+                 <div class="card">
+                     
                      <div class="card-body p-0">
                          <div class="table-responsive">
-                             <table class="table table-striped">
+                             <table class=" table table-striped table-responsive" id="example">
                                  <tr>
-                                     <th class="px-4 py-3">Category Name</th>
-                                     <th class="px-4 py-3">Category Unity</th>
-                                     <th class="px-4 py-3">Date</th>
-                                     <th class="px-4 py-3">Actions</th>
+                                     <th class="px-4 py-3 text-xl font-bold ">Category Name</th>
+                                     <th class="px-4 py-3 text-xl font-bold ">Category Unity</th>
+                                     <th class="px-4 py-3 text-xl font-bold ">Date</th>
+                                     <th class="px-4 py-3 text-xl font-bold ">Actions</th>
                                  </tr>
                                  @forelse ($categories as $category)
                                  <tr>
-                                     <td class="align-middle">
+                                     <td class=" px-4 text-xl ">
                                          {{$category->name}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="px-4 text-xl">
                                          {{$category->unity}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="text-xl">
                                          {{$category->created_at}}
                                      </td>
 
                                      <td class="align-middle">
                                          <div class="dropdown">
-                                             <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle">Options</a>
+                                             <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle text-xl">Options</a>
                                              <div class="dropdown-menu">
                                                  <a href="{{route('getUpdateCategory',$category->id)}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
                                                  <div class="dropdown-divider"></div>
@@ -67,4 +70,16 @@
                  </div>
              </div>
          </div>
+
+         <div style="float:right; position: relative; py-12">
+            <a style="align-items: right;" href="{{route('getAddCategory')}}" class="py-3 bg-blue-700 text-xl text-white rounded px-2"><ion-icon name="add" class="mt-2"></ion-icon>Add Category</a>
+                         </div>
          @endsection
+
+         <script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>

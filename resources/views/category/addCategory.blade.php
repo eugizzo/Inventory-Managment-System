@@ -1,3 +1,5 @@
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 @extends('layouts.header')
 @section('content')
 <link rel="stylesheet" href="/style.css">
@@ -9,7 +11,6 @@
     <div class="form-header">
         <h1>Register Category</h1>
     </div>
-
     <!-- form body -->
     <div class="form-body">
         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -60,3 +61,4 @@
 </form>
 
 @endsection
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
