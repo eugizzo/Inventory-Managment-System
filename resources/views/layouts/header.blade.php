@@ -159,9 +159,6 @@
                         </li>
                         @endif
 
-
-
-
                         @if(Auth::user()->role == 'manager')
                         <li class="dropdown ">
                             <a href="{{route('getCompanyProducts',Auth::user()->branch->company_id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-700">Products</span></a>
