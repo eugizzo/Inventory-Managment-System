@@ -27,46 +27,50 @@
                          <div class="table-responsive">
                              <table class="table table-striped" id="table-1">
                                  <tr>
-                                     <th class="px-4 py-3">Product Name</th>
-                                     <th class="px-4 py-3">Category</th>
-                                     <th class="px-4 py-3">Brand</th>
+                                    <th class="px-4 py-3 text-xl">#</th>
+                                     <th class="px-4 py-3 text-xl">Product Name</th>
+                                     <th class="px-4 py-3 text-xl">Category</th>
+                                     <th class="px-4 py-3 text-xl">Brand</th>
                                      @if(Auth::user()->role =="owner")
-                                     <th class="px-4 py-3">Purchased Quantity</th>
-                                     <th class="px-4 py-3">Sold Quantity</th>
-                                     <th class="px-4 py-3">Remaining Quantity</th>
-                                     <th class="px-4 py-3">RecordedBy</th>
-                                     <th class="px-4 py-3">Actions</th>
+                                     <th class="px-4 py-3 text-xl">Purchased Quantity</th>
+                                     <th class="px-4 py-3 text-xl">Sold Quantity</th>
+                                     <th class="px-4 py-3 text-xl">Remaining Quantity</th>
+                                     <th class="px-4 py-3 text-xl">RecordedBy</th>
+                                     <th class="px-4 py-3 text-xl">Actions</th>
                                      @endif
                                  </tr>
                                  @forelse ($products as $product)
                                  <tr>
-                                     <td class="align-middle">
+                                 <td class="align-middle px-4 text-xl">
+                                         {{$product->id}}
+                                     </td>
+                                     <td class="align-middle px-4 text-xl">
                                          {{$product->name}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$product->category->name}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$product->brand->name}}
                                      </td>
                                      @if(Auth::user()->role =="owner")
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$product->purchasedQuantity}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$product->soldQuantity}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$product->remainingQuantity}}
                                      </td>
 
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$product->user->firstName}}
                                      </td>
-                                     <td class="align-middle">
+                                     <td class="align-middle px-4 text-xl">
 
-                                         <div class="dropdown">
-                                             <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle">Options</a>
+                                         <div class="dropdown px-4 text-xl">
+                                             <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle text-xl">Options</a>
                                              <div class="dropdown-menu">
                                                  <a href="{{route('getUpdateProduct',$product->id)}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Update</a>
                                                  <div class="dropdown-divider"></div>
