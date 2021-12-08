@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BranchChartController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
@@ -8,6 +9,9 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StockInController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,12 +28,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('login');
 });
+// Route::get('/', [ChartController::class, ('__invoke')])->name('index');
+
+
+Route::get('export', [ExportController::class, ('export')])->name('export');
+
 
 
 //auth
 Route::get('getLogin', [AuthController::class, ('getLogin')])->name('getLogin');
 Route::post('checkLogin', [AuthController::class, ('checkLogin')])->name('checkLogin');
 Route::post('logout', [AuthController::class, ('logout')])->name('logout');
+// Route::get('index', [TestController::class, ('index')])->name('index');
+
 
 
 // Route::post('addManyStocks', [StockInController::class, ('addManyStocks')])->name('addManyStocks');
@@ -81,9 +92,10 @@ Route::group(['middleware' => ['OwnerManager']], function () {
     Route::get('getAllProducts', [ProductController::class, ('getAllProducts')])->name('getAllProducts');
 
     Route::get('getStock/{id}', [StockInController::class, ('getStock')])->name('getStock');
-Route::get('getProductStockIn/{id}', [StockInController::class, ('getProductStockIn')])->name('getProductStockIn');
-Route::get('getBranchStockIn/{id}', [StockInController::class, ('getBranchStockIn')])->name('getBranchStockIn');
-Route::get('getBranchStockOut/{id}', [StockInController::class, ('getBranchStockOut')])->name('getBranchStockOut');
+
+    Route::get('getProductStockIn/{id}', [StockInController::class, ('getProductStockIn')])->name('getProductStockIn');
+    Route::get('getBranchStockIn/{id}', [StockInController::class, ('getBranchStockIn')])->name('getBranchStockIn');
+    Route::get('getBranchStockOut/{id}', [StockInController::class, ('getBranchStockOut')])->name('getBranchStockOut');
 
 
     Route::get('getAllBranchStockOut/{id}', [StockInController::class, ('getAllBranchStockOut')])->name('getAllBranchStockOut');
@@ -116,8 +128,8 @@ Route::group(['middleware' => ['manager']], function () {
     // Route::post('sellStock', [StockInController::class, ('sellStock')])->name('sellStock');
     // Route::get('getAddStock/{id}', [StockInController::class, ('getAddStock')])->name('getAddStock');
     Route::get('getAddManyStocks', [StockInController::class, ('getAddManyStocks')])->name('getAddManyStocks');
-Route::get('getSellStocks/{id}', [StockInController::class, ('getSellStocks')])->name('getSellStocks');
-
+    Route::get('getSellStocks/{id}', [StockInController::class, ('getSellStocks')])->name('getSellStocks');
+    Route::get('SalesPurchaseChart', [BranchChartController::class, ('SalesPurchaseChart')])->name('SalesPurchaseChart');
 });
 Route::group(['middleware' => ['owner']], function () {
 

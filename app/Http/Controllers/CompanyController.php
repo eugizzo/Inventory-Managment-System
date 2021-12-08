@@ -63,10 +63,12 @@ class CompanyController extends Controller
             $company->location = $request->location;
             $company->user_id = $user->id;
             $result = $company->save();
+            $message = "Dear $user->firstName, your company registration was successfully made, your password is $password";
             $details = [
                 'message' => "Dear $user->firstName, your company registration was successfully made, your password is $password",
             ];
             try {
+                $this->sendMessage($user->phoneNumber, $message);
                 Mail::to("$user->email")->send(new MailMail($details));
             } catch (Exception $e) {
             }
@@ -156,10 +158,12 @@ class CompanyController extends Controller
                     $password = $this->randomPassword();
                     $user->password = Hash::make($password);
                     $result = $user->save();
+                    $message = "Dear $user->firstName, your company registration was successfully made, your password is $password";
                     $details = [
                         'message' => "Dear $user->firstName, your are the company registration was successfully made, your password is $password",
                     ];
                     try {
+                        $this->sendMessage($user->phoneNumber, $message);
                         Mail::to("$user->email")->send(new MailMail($details));
                     } catch (Exception $e) {
                     }
@@ -206,9 +210,6 @@ class CompanyController extends Controller
     public function getCompanyBranches($id)
     {
         $branches = Branch::where('company_id', $id)->get();
-        if (count($branches) == 0) {
-            return redirect()->back()->with('warning', 'company has no branch');
-        }
         if ($branches) {
             $company = company::where('id', $id)->first();
             return view('branch.branches', compact('branches', 'company'));
@@ -255,5 +256,30 @@ class CompanyController extends Controller
         } else {
             return redirect()->back()->with('warning', 'Company not found');
         }
+    }
+    public function sendMessage($phone, $message)
+    {
+        $data = array(
+            "sender" => '+250781548519',
+            "recipients" => $phone,
+            "message" => $message
+        );
+        $url = "https://www.intouchsms.co.rw/api/sendsms/.json";
+        $data = http_build_query($data);
+        $username = "eugene";
+        $password = "eugene123";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        $result = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        return $result;
+        $httpcode;
     }
 }

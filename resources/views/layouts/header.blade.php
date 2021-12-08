@@ -9,6 +9,17 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>{{Auth::user()->role}} Dashboard</title>
     <!-- General CSS Files -->
+    <!-- // -->
+    <link rel="stylesheet" href="/assets/css/app.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    <!-- // -->
+
+
     <link rel="stylesheet" href="/assets/css/app.min.css">
     <!-- Template CSS -->
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -125,12 +136,8 @@
                         <li class="dropdown ">
                             <a href="{{route('getCompanyProducts',Auth::user()->branch->company_id)}}" class="nav-link"><i data-feather="monitor"></i><span>Products</span></a>
                         </li>
-
                         <li class="dropdown ">
                             <a href="{{route('getAddManyStocks')}}" class="nav-link"><i data-feather="monitor"></i><span>Add a stock</span></a>
-                        </li>
-                        <li class="dropdown ">
-                            <a href="" class="nav-link"><i data-feather="monitor"></i><span>Statistics</span></a>
                         </li>
                         <li class="dropdown ">
                             <a href="{{route('getStock',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span>View Stock</span></a>
@@ -141,10 +148,11 @@
                         <li class="dropdown ">
                             <a href="{{route('getSellStocks',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span>Make Sales</span></a>
                         </li>
-
-
                         <li class="dropdown ">
                             <a href="{{route('getBranchStockOut',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span>Sales</span></a>
+                        </li>
+                        <li class="dropdown ">
+                            <a href="{{route('SalesPurchaseChart')}}" class="nav-link"><i data-feather="monitor"></i><span>Statistics</span></a>
                         </li>
 
 
@@ -258,6 +266,7 @@
     <script src="/assets/js/scripts.js"></script>
     <!-- Custom JS File -->
     <script src="/assets/js/custom.js"></script>
+    @stack('scripts')
 </body>
 
 
