@@ -10,7 +10,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Purchase-Sales Chart</h4>
+                            <h4>Purchase-Sales-Profit Chart</h4>
                         </div>
                         <div class="card-body">
                             <div class="recent-report__chart">
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-6">
+                <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-6">
                     <div class="card">
                         <div class="card-header">
                             <h4>Product-Quantity Chart</h4>
@@ -30,19 +30,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Purchase-Sales-Profit Chart</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="recent-report__chart">
-                                <div id="chart3"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -62,7 +50,7 @@
             },
             plotOptions: {
                 bar: {
-                    horizontal: false,
+                    horizontal: true,
                     endingShape: 'rounded',
                     columnWidth: '55%',
                 },
@@ -76,15 +64,21 @@
                 colors: ['transparent']
             },
             series: [{
-                name: 'Purchases',
+                name: 'Purchases Value',
 
-                data: <?= $stockIn ?>
+                data: <?= $purchased ?>
             }, {
-                name: 'Sales',
-                data: <?= $stockOut ?>
+                name: 'Sales Value',
+                data: <?= $sold ?>
+            }, {
+                name: 'Remaning Quantity Value',
+                data: <?= $remaining ?>
+            }, {
+                name: 'Profit/Loss',
+                data: <?= $profit ?>
             }],
             xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                categories: <?= $name ?>,
                 labels: {
                     style: {
                         colors: '#9aa0ac',
@@ -132,7 +126,7 @@
             },
             plotOptions: {
                 bar: {
-                    horizontal: true,
+                    horizontal: false,
                     endingShape: 'rounded',
                     columnWidth: '55%',
                 },
@@ -188,82 +182,6 @@
 
         var chart = new ApexCharts(
             document.querySelector("#chart2"),
-            options
-        );
-
-        chart.render();
-
-
-    }
-
-    function chart3() {
-        var options = {
-            chart: {
-                height: 350,
-                type: 'bar',
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: true,
-                    endingShape: 'rounded',
-                    columnWidth: '55%',
-                },
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            series: [{
-                name: 'Purchases Value',
-
-                data: <?= $purchasedValue ?>
-            }, {
-                name: 'Sales Value',
-                data: <?= $soldValue ?>
-            }, {
-                name: 'Remaning Quantity Value',
-                data: <?= $remainingValue ?>
-            }, {
-                name: 'Profit/Loss',
-                data: <?= $profitValue ?>
-            }],
-            xaxis: {
-                categories: <?= $productName ?>,
-                labels: {
-                    style: {
-                        colors: '#9aa0ac',
-                    }
-                }
-            },
-            yaxis: {
-                title: {
-                    text: 'Rwf'
-                },
-                labels: {
-                    style: {
-                        color: '#9aa0ac',
-                    }
-                }
-            },
-            fill: {
-                opacity: 1
-
-            },
-            tooltip: {
-                y: {
-                    formatter: function(val) {
-                        return "Rwf " + val
-                    }
-                }
-            }
-        }
-
-        var chart = new ApexCharts(
-            document.querySelector("#chart3"),
             options
         );
 

@@ -117,6 +117,8 @@ class UserController extends Controller
     {
         $branches = Branch::count();
         $products = Product::where('company_id', Auth::user()->company->id)->count();
+        $topSelling = Product::where('company_id', Auth::user()->company->id)->get();
+        $topSelling = Product::where('company_id', Auth::user()->company->id)->orderByDesc('soldQuantity')->first();
         $categories = Category::count();
         $brands = Brand::count();
         return view('user.ownerLandingPage', compact(
@@ -124,6 +126,7 @@ class UserController extends Controller
             'products',
             'categories',
             'brands',
+            'topSelling'
         ));
     }
 }
