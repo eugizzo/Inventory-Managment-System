@@ -161,25 +161,25 @@
 
                         @if(Auth::user()->role == 'manager')
                         <li class="dropdown ">
-                            <a href="{{route('getCompanyProducts',Auth::user()->branch->company_id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-700">Products</span></a>
+                            <a href="{{route('getCompanyProducts',Auth::user()->branch->company_id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">Products</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getAddManyStocks')}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-700">Add a stock</span></a>
+                            <a href="{{route('getAddManyStocks')}}" class="nav-link"><i class="fa fa-plus"></i><span class="text-black">Add a stock</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-700">Statistics</span></a>
+                            <a href="" class="nav-link"><i data-feather="monitor"></i><span class="text-black">Statistics</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getStock',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-700">View Stock</span></a>
+                            <a href="{{route('getStock',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">View Stock</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getBranchStockIn',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-700">View StockIn history</span></a>
+                            <a href="{{route('getBranchStockIn',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">View StockIn history</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getSellStocks',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-700">Make Sales</span></a>
+                            <a href="{{route('getSellStocks',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">Make Sales</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getBranchStockOut',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-700">Sales</span></a>
+                            <a href="{{route('getBranchStockOut',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">Sales</span></a>
                         </li>
                         <li class="dropdown ">
                             <a href="{{route('SalesPurchaseChart')}}" class="nav-link"><i data-feather="monitor"></i><span>Statistics</span></a>
@@ -220,7 +220,7 @@
                             <div class="selectgroup selectgroup-pills sidebar-color">
                                 <label class="selectgroup-item">
                                     <input type="radio" name="icon-input" value="1" class="selectgroup-input select-sidebar">
-                                    <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip" data-original-title="Light Sidebar"><i class="fas fa-sun"></i></span>
+                                    <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip" data-original-title="primary Sidebar"><i class="fas fa-sun"></i></span>
                                 </label>
                                 <label class="selectgroup-item">
                                     <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar" checked>

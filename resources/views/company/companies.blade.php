@@ -113,12 +113,20 @@
                      </div>
                  </div>
              </div>
+         
+
+
+         <div class="flex justify-end px-96 ml-96 fixed mt-96">
+         <div class=" animate-pulse py-56 " style="float:right; position: relative;">
+            <a style="align-items: right;" href="{{route('getAddCategory')}}" class="py-8 bg-blue-700 text-xl text-white rounded-full px-2 "><ion-icon name="add" class="mt-2"></ion-icon>Add Company</a>
          </div>
+</div></div>
          <script type="text/javascript">
     $(document).ready(function() {
     $('#example').DataTable();
 } );
 </script>
+
 
          @endsection
          

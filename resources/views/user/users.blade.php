@@ -33,10 +33,16 @@
                                      <th class="px-4 py-3 text-base font-bold">User Status</th>
                                      <th class="px-4 py-3 text-base font-bold">Actions</th>
                                  </tr>
+                                 @php
+                                 $i =0;
+                                 @endphp
                                  @forelse ($users as $user)
+                                 @php
+                                 $i ++;
+                                 @endphp
                                  <tr>
                                  <td class="align-middle px-4 text-xl">
-                                         {{$user->id}}
+                                         {{$i}}
                                      </td>
                                      <td class="align-middle px-4 text-xl">
                                          {{$user->firstName}}

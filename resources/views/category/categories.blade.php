@@ -1,4 +1,4 @@
-
+<link href="/resources/css/button.css">
  @extends('layouts.header')
 
  @section('content')
@@ -70,10 +70,14 @@
                  </div>
              </div>
          </div>
-
-         <div style="float:right; position: relative; py-12">
-            <a style="align-items: right;" href="{{route('getAddCategory')}}" class="py-3 bg-blue-700 text-xl text-white rounded px-2"><ion-icon name="add" class="mt-2"></ion-icon>Add Category</a>
-                         </div>
+<div class=" py-64">
+         <div style="float:right; position: relative; py-12 " class="animate-pulse fixed ">
+            <a style="align-items: right;" href="{{route('getAddCategory')}}" class="py-8 bg-blue-700 text-xl text-white rounded-full px-2 "><ion-icon name="add" class="mt-2"></ion-icon>Add Category</a>
+         </div>
+</div>
+         
+      
+    
          @endsection
 
          <script type="text/javascript">
