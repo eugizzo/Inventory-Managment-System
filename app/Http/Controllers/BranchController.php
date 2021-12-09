@@ -63,12 +63,13 @@ class BranchController extends Controller
             $branch->user_id = $user->id;
             $branch->company_id = Auth::user()->company->id;
             $result = $branch->save();
-            $message = "Dear $user->firstName, your are the new manager of $branch->name branch in  Auth::user()->company->name , your password is $password";
+            $company = Auth::user()->company->name;
+            $message = "Dear $user->firstName, your are the new manager of $branch->name branch in $company   , your password is $password";
             $details = [
-                'message' => "Dear $user->firstName, your are the new manager of $branch->name branch in  Auth::user()->company->name , your password is $password",
+                'message' => "Dear $user->firstName, your are the new manager of $branch->name branch in  $company , your password is $password",
             ];
             try {
-                $this->sendMessage($user->phoneNumber, $message);
+                sendMessage($user->phoneNumber, $message);
                 Mail::to("$user->email")->send(new MailMail($details));
             } catch (Exception $e) {
             }
@@ -156,12 +157,13 @@ class BranchController extends Controller
                     $password = $this->randomPassword();
                     $user->password = Hash::make($password);
                     $result = $user->save();
-                    $message = "Dear $user->firstName, your are the new manager of $branch->name branch in  Auth::user()->company->name , your password is $password";
+                    $company = Auth::user()->company->name;
+                    $message = "Dear $user->firstName, your are the new manager of $branch->name branch in $company  , your password is $password";
                     $details = [
-                        'message' => "Dear $user->firstName, your are the new manager of $branch->name branch in  Auth::user()->company->name , your password is $password",
+                        'message' => "Dear $user->firstName, your are the new manager of $branch->name branch in $company   , your password is $password",
                     ];
                     try {
-                        $this->sendMessage($user->phoneNumber, $message);
+                        sendMessage($user->phoneNumber, $message);
                         Mail::to("$user->email")->send(new MailMail($details));
                     } catch (Exception $e) {
                     }
@@ -227,30 +229,5 @@ class BranchController extends Controller
         } else {
             return redirect()->back()->with('warning', 'branch not found');
         }
-    }
-    public function sendMessage($phone, $message)
-    {
-        $data = array(
-            "sender" => '+250781548519',
-            "recipients" => $phone,
-            "message" => $message
-        );
-        $url = "https://www.intouchsms.co.rw/api/sendsms/.json";
-        $data = http_build_query($data);
-        $username = "eugene";
-        $password = "eugene123";
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-
-        return $result;
-        $httpcode;
     }
 }

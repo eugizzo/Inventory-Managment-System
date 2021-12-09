@@ -25,7 +25,7 @@
                                      <th class="px-4 py-3">Date</th>
                                      <th class="px-4 py-3">Client Phone Number</th>
                                      <th class="px-4 py-3">Details
-                                         <table class="table table-striped">
+                                         <table class="table">
                                              <tr>
                                                  <td class="align-middle">
                                                      Product name
@@ -50,7 +50,7 @@
                                          {{$stock->phoneNumber}}
                                      </td>
                                      <td class="align-middle">
-                                         <table class="table table-striped">
+                                         <table class="table ">
                                              @foreach ($stock->products as $one)
                                              <tr>
                                                  <td class="align-middle">
