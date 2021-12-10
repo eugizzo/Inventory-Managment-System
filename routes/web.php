@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('index');
 });
 // Route::get('/', [ChartController::class, ('__invoke')])->name('index');
 
