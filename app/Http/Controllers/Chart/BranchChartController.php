@@ -70,8 +70,6 @@ class BranchChartController extends Controller
                 ->orderByDesc('product_stock_in.created_at')
                 ->get();
 
-
-
             $remainingQuantity  = $stock->remainingQuantity;
             $totalRemaining = 0;
             foreach ($stockIns as $stock) {

@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Auth;
 
 class StockInController extends Controller
 {
-  
-    
-    
-    
+
+
+
+
     public function getStockOut($id)
     {
         $stock = StockIn::where("id", $id)->first();
@@ -69,11 +69,16 @@ class StockInController extends Controller
     {
         return view('stockOut');
     }
-    
+
 
     function getBranchStockOut($id)
     {
         $stockOut = StockOut::where('branch_id', $id)->get();
         return view('stockIn.branchStockOut', ['stockOut' => $stockOut]);
+    }
+    public function invoice($id)
+    {
+        $stockOut = StockOut::where('branch_id', Auth::user()->branch->id)->where('id', $id)->first();
+        return view('invoice.clientInvoice', ['stockOut' => $stockOut]);
     }
 }

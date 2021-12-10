@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('chart');
 });
 // Route::get('/', [ChartController::class, ('__invoke')])->name('index');
 
@@ -40,13 +40,18 @@ Route::get('getLogin', [AuthController::class, ('getLogin')])->name('getLogin');
 Route::post('checkLogin', [AuthController::class, ('checkLogin')])->name('checkLogin');
 Route::post('logout', [AuthController::class, ('logout')])->name('logout');
 
+Route::get('invoice/{id}', [StockInController::class, ('invoice')])->name('invoice');
+Route::get('generatePdf', [ExportController::class, ('generatePdf')])->name('generatePdf');
+
+
+
+
 
 
 Route::group(['middleware' => ['AdminOwner']], function () {
     Route::get('changeUserStatus/{id}', [UserController::class, ('changeUserStatus')])->name('changeUserStatus');
     Route::get('getCompanyBranches/{id}', [CompanyController::class, ('getCompanyBranches')])->name('getCompanyBranches');
     Route::namespace('branch')->group(function () {
-        Route::get('getAddBranch', [BranchController::class, ('getAddBranch')])->name('getAddBranch');
         Route::post('addBranch', [BranchController::class, ('addBranch')])->name('addBranch');
 
         Route::get('getUpdateBranch/{id}', [BranchController::class, ('getUpdateBranch')])->name('getUpdateBranch');
@@ -113,6 +118,7 @@ Route::group(['middleware' => ['manager']], function () {
     Route::get('SalesPurchaseChart', [BranchChartController::class, ('SalesPurchaseChart')])->name('SalesPurchaseChart');
 });
 Route::group(['middleware' => ['owner']], function () {
+    Route::get('getAddBranch', [BranchController::class, ('getAddBranch')])->name('getAddBranch');
     Route::get('profitChart', [CompanyChart::class, ('profitChart')])->name('profitChart');
     Route::get('getOwnerLandingPage/{id}', [UserController::class, ('getOwnerLandingPage')])->name('getOwnerLandingPage');
     Route::get('getAddProduct', [ProductController::class, ('getAddProduct')])->name('getAddProduct');

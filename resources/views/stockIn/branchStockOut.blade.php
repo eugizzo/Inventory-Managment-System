@@ -40,6 +40,7 @@
                                          </table>
 
                                      </th>
+                                     <th class="px-4 py-3">Action</th>
                                  </tr>
                                  @forelse ($stockOut as $stock)
                                  <tr>
@@ -65,6 +66,14 @@
                                              </tr>
                                              @endforeach
                                          </table>
+                                     </td>
+                                     <td class="align-middle">
+                                         <div class="dropdown">
+                                             <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle text-xl">Options</a>
+                                             <div class="dropdown-menu">
+                                                 <a href="{{route('invoice',$stock->id)}}" class="dropdown-item has-icon"><i class="far fa-edit"></i>Invoice</a>
+                                             </div>
+                                         </div>
                                      </td>
                                  </tr>
                                  @empty

@@ -35,12 +35,12 @@
 
             <div class="form-group left">
                 <label for="firstname" class="label-title">Product name *</label>
-                <input name="name" value="{{$product->name}}" type="text" id="firstname" class="form-input" placeholder="enter your Category name" required="required" />
+                <input name="name" value="{{$product->name}}" type="text" id="firstname" class="form-input" placeholder="enter your Product name" required="required" />
             </div>
             <div class="form-group right">
                 <label class="label-title">Categories</label>
                 <div>
-                    <select class="form-control select2" name="category_id">
+                    <select class="form-control select2 py-1" name="category_id">
                         @foreach($categories as $category)
                         @if($product->category_id == $category->id)
                         <option value="{{$category->id}}" selected>{{$category->name}} in {{$category->unity}} </option>
@@ -54,10 +54,10 @@
         </div>
 
         <div class="horizontal-group">
-            <div class="form-group left">
+            <div class="form-group right">
                 <label class="label-title">Brands</label>
                 <div>
-                    <select class="form-control select2" name="brand_id">
+                    <select class="form-control select2 py-1" name="brand_id">
                         @foreach($brands as $brand)
                         @if($product->brand_id == $brand->id)
                         <option value="{{$brand->id}}" selected>{{$brand->name}}</option>

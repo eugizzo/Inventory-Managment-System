@@ -25,9 +25,9 @@ class AdminCheck
             } else if (Auth()->user()->role == "manager" && Auth()->user()->status == "active") {
                 return redirect()->route('getCompanyProducts', Auth::user()->branch->company_id);
             }
-            return back();
+            return back()->with('warning', 'your account is not active');
         } else {
-            return back();
+            return back()->with('warning', 'you must be loggedIn to access this resource');
         }
     }
 }

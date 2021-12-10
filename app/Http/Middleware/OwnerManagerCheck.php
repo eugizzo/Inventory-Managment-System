@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OwnerManagerCheck
 {
@@ -16,14 +17,22 @@ class OwnerManagerCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth()->check() && Auth()->user()->status == "active") {
-            if (Auth()->user()->role == "manager" || Auth()->user()->role == "owner") {
-                return $next($request);
+        if (Auth()->check()) {
+            if (Auth()->user()->status == "active") {
+                if (Auth()->user()->role == "owner" && Auth()->user()->company->status == "active") {
+                    return $next($request);
+                } else if (Auth()->user()->role == "manager"  && Auth()->user()->branch->status == "active") {
+                    return $next($request);
+                } else if (Auth()->user()->role == "admin") {
+                    return redirect('getLandingPage');
+                } else {
+                    return back()->with('warning', 'your company or branch account is not active');
+                }
             } else {
-                return back();
+                return back()->with('warning', 'your account is not active');
             }
         } else {
-            return back();
+            return back()->with('warning', 'you must be loggedIn to access this resource');
         }
     }
 }

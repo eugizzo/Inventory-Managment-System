@@ -10,7 +10,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Purchase-Sales-Profit Chart</h4>
+                            <h4>Product-Profit Chart</h4>
                         </div>
                         <div class="card-body">
                             <div class="recent-report__chart">
@@ -19,10 +19,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-6">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Product-Quantity Chart</h4>
+                            <h4>Branch-Profit Chart</h4>
                         </div>
                         <div class="card-body">
                             <div class="recent-report__chart">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
 
@@ -140,17 +140,20 @@
                 colors: ['transparent']
             },
             series: [{
-                name: 'Purchased Quantity',
-                data: <?= $purchased ?>
+                name: 'Branch Purchases',
+                data: <?= $stockIn ?>
             }, {
-                name: 'Sold Quantity',
-                data: <?= $sold ?>
+                name: 'Branch Sales',
+                data: <?= $stockOut ?>
             }, {
-                name: 'Remaining Quantity',
-                data: <?= $remaining ?>
+                name: 'Branch Remaining Stock',
+                data: <?= $totalRemainingStock ?>
+            }, {
+                name: 'Branch profit',
+                data: <?= $totalprofitValue ?>
             }],
             xaxis: {
-                categories: <?= $name ?>,
+                categories: <?= $branchName ?>,
                 labels: {
                     style: {
                         colors: '#9aa0ac',
@@ -174,7 +177,7 @@
             tooltip: {
                 y: {
                     formatter: function(val) {
-                        return val
+                        return "Rwf " + val
                     }
                 }
             }

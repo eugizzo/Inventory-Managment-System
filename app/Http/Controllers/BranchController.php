@@ -33,7 +33,7 @@ class BranchController extends Controller
     public function addBranch(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|unique:branches',
+            'name' => 'required|string',
             'address' => 'required|string',
             'firstName' => 'required|string',
             'lastName' => 'required|string',
@@ -44,6 +44,10 @@ class BranchController extends Controller
         ]);
         if ($validator->fails()) {
             return back()->withInput()->withErrors($validator);
+        }
+        $branch = Branch::where('name', $request->name)->where('company_id', '==', Auth::user()->company->id)->first();
+        if ($branch) {
+            return redirect()->back()->with('warning', 'name already registered with another branch');
         }
         $user = new User();
         $user->firstName = $request->firstName;
@@ -101,7 +105,7 @@ class BranchController extends Controller
         if ($validator->fails()) {
             return back()->withInput()->withErrors($validator);
         }
-        $branch = Branch::where('name', $request->name)->where('id', '!=', $request->id)->first();
+        $branch = Branch::where('name', $request->name)->where('id', '!=', $request->id)->where('company_id', '==', Auth::user()->company->id)->first();
         if ($branch) {
             return redirect()->back()->with('warning', 'name already registered with another branch');
         }

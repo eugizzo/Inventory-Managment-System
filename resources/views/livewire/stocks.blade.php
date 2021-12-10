@@ -16,7 +16,7 @@
                                     <tr>
                                         <td class=" col-lg-3">
                                             <label>Product</label>
-                                            <select class="form-control py-2" name="items[{{$index}}][product_id]" wire:model="items.{{$index}}.product_id">
+                                            <select class="form-control py-1" name="items[{{$index}}][product_id]" wire:model="items.{{$index}}.product_id">
                                                 <option></option>
                                                 @foreach($products as $product)
                                                 <option value="{{$product->id}}" {{$product->id==old('id')?'selected':''}}>{{$product->name}} in {{$product->category->unity}} </option>

@@ -25,7 +25,7 @@
                                     <tr>
                                         <td class=" col-lg-3">
                                             <label>Product</label>
-                                            <select class="form-control py-2" name="items[{{$index}}][product_id]" wire:model="items.{{$index}}.product_id">
+                                            <select class="form-control py-1" name="items[{{$index}}][product_id]" wire:model="items.{{$index}}.product_id">
                                                 <!-- <select wire:click="changeEvent($event.target.value)" class="form-control" name="items[{{$index}}][product_id]" wire:model="items.{{$index}}.product_id"> -->
                                                 <option></option>
                                                 @foreach($stocks as $stock)

@@ -93,8 +93,8 @@ class UserController extends Controller
     public function getLandingPage()
     {
         $users = User::where('role', '!=', 'admin')->count();
-        $activeUser = User::where('status', 'active')->count();
-        $inActiveUser = User::where('status', 'inactive')->count();
+        $activeUser = User::where('status', 'active')->where('role', '!=', 'admin')->count();
+        $inActiveUser = User::where('status', 'inactive')->where('role', '!=', 'admin')->count();
         $companies = Company::count();
         $activeCompanies = Company::where('status', 'active')->count();
         $inActiveCompanies = Company::where('status', 'inactive')->count();
@@ -115,7 +115,7 @@ class UserController extends Controller
     }
     public function getOwnerLandingPage($id)
     {
-        $branches = Branch::count();
+        $branches = Branch::where('company_id', Auth::user()->company->id)->count();
         $products = Product::where('company_id', Auth::user()->company->id)->count();
         $topSelling = Product::where('company_id', Auth::user()->company->id)->get();
         $topSelling = Product::where('company_id', Auth::user()->company->id)->orderByDesc('soldQuantity')->first();

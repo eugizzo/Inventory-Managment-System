@@ -174,9 +174,6 @@
                             <a href="{{route('getAddManyStocks')}}" class="nav-link"><i class="fa fa-plus"></i><span class="text-black">Add a stock</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="" class="nav-link"><i data-feather="monitor"></i><span class="text-black">Statistics</span></a>
-                        </li>
-                        <li class="dropdown ">
                             <a href="{{route('getStock',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">View Stock</span></a>
                         </li>
                         <li class="dropdown ">

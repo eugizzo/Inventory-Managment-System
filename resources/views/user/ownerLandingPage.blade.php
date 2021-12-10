@@ -99,7 +99,11 @@
                          <div class="row">
                              <div class="col">
                                  <h5 class="card-title text-uppercase text-muted mb-0">Top Selling Product</h5>
+                                 @if($topSelling)
                                  <span class="h2 font-weight-bold mb-0">{{$topSelling->name}}</span>
+                                 @else
+                                 <span class="h2 font-weight-bold mb-0">No Product</span>
+                                 @endif
                              </div>
                              <div class="col-auto">
                                  <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
