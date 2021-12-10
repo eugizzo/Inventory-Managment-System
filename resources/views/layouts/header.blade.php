@@ -39,10 +39,12 @@
     <div class="loader"></div>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
-            <div class="navbar-bg"></div>
-            <nav class="navbar navbar-expand-lg main-navbar sticky">
+            <div class="navbar"></div>
+
+
+            e <nav class="navbar navbar-expand-lg main-navbar sticky">
                 <div class="form-inline mr-auto">
-                    <ul class="navbar-nav mr-3">
+                    <ul class="navbar-nav">
                         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
                   collapse-btn"> <i data-feather="align-justify"></i></a></li>
 
@@ -53,7 +55,7 @@
                     @if(Auth::user()->gender == 'female')
 
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="/assets/img/user.png" class="user-img-radious-style">
+                            <img alt="image" src="/assets/img/users/user-8.png" class="user-img-radious-style">
                             <span class="d-sm-none d-lg-inline-block"></span>
                         </a>
                         @else
@@ -75,9 +77,9 @@
                     </li>
                 </ul>
 
-
-
             </nav>
+
+
             <div class="main-sidebar sidebar-style-2 py-4">
                 <aside id="sidebar-wrapper">
                     <!-- <div class="sidebar-brand text-xl px-4 w"> -->
@@ -98,7 +100,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <div class="py-2"> <span class="font-semibold text-2xl tracking-tight py-1 ">Inventory_MS</span>
+                        <div class="py-4"> <span class="font-semibold text-4xl tracking-tight ">Inventory_MS</span>
                         </div>
                     </div>
                     <ul class="sidebar-menu py-4">
@@ -107,26 +109,26 @@
                         <!-- /// -->
                         @if(Auth::user()->role == 'admin')
                         <li class="dropdown active">
-                            <a href="{{route('getLandingPage')}}" class="nav-link"><i data-feather="monitor"></i><span class=" hover:text-indigo-500">Dashboard</span></a>
+                            <a href="{{route('getLandingPage')}}" class="nav-link"><i data-feather="monitor"></i><span class=" hover:text-indigo-600">Dashboard</span></a>
                         </li>
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
-                            <a href="{{route('getUsers')}}" class="nav-link"><i data-feather="user-check" class="text-black-700"></i><span class="">Users</span></a>
+                            <a href="{{route('getUsers')}}" class="nav-link"><i data-feather="user-check" class="text-black-700"></i><span class="text-blue-600">Users</span></a>
                         </li>
 
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
-                            <a href="{{route('getAllCompanies')}}" class="nav-link"><i data-feather="layout"></i><span class="">Companies</span></a>
+                            <a href="{{route('getAllCompanies')}}" class="nav-link"><i data-feather="layout"></i><span class="text-blue-600">Companies</span></a>
                         </li>
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
-                            <a href="{{route('getAllCategories')}}" class="nav-link"><i data-feather="command"></i><span class="">Categories</span></a>
+                            <a href="{{route('getAllCategories')}}" class="nav-link"><i data-feather="command"></i><span class="text-blue-600">Categories</span></a>
                         </li>
 
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
                             <a href="{{route('getAllBrands')}}" class="nav-link">
-                                <ion-icon name="clipboard" class="px-2"></ion-icon><span class="">Brands</span>
+                                <ion-icon name="clipboard" class="px-2"></ion-icon><span class="text-blue-600">Brands</span>
                             </a>
                         </li>
                         l @endif
@@ -168,22 +170,23 @@
 
                         @if(Auth::user()->role == 'manager')
                         <li class="dropdown ">
-                            <a href="{{route('getCompanyProducts',Auth::user()->branch->company_id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">Products</span></a>
+                            <a href="{{route('getCompanyProducts',Auth::user()->branch->company_id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-600">Products</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getAddManyStocks')}}" class="nav-link"><i class="fa fa-plus"></i><span class="text-black">Add a stock</span></a>
+                            <a href="{{route('getAddManyStocks')}}" class="nav-link"><i class="fa fa-plus"></i><span class="text-blue-600">Add a stock</span></a>
                         </li>
                         <li class="dropdown ">
                             <a href="{{route('getStock',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">View Stock</span></a>
+
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getBranchStockIn',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">View StockIn history</span></a>
+                            <a href="{{route('getBranchStockIn',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-600">View StockIn history</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getSellStocks',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">Make Sales</span></a>
+                            <a href="{{route('getSellStocks',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-600">Make Sales</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getBranchStockOut',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">Sales</span></a>
+                            <a href="{{route('getBranchStockOut',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-600">Sales</span></a>
                         </li>
                         <li class="dropdown ">
                             <a href="{{route('SalesPurchaseChart')}}" class="nav-link"><i data-feather="monitor"></i><span>Statistics</span></a>
@@ -300,8 +303,9 @@
     <script src="/assets/js/scripts.js"></script>
     <!-- Custom JS File -->
     <script src="/assets/js/custom.js"></script>
-    @stack('scripts')
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    @stack('scripts')
+
 </body>
 
 
