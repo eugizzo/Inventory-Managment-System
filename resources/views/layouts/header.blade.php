@@ -148,7 +148,7 @@
                         </li>
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
-                            <a href="{{route('getAllCategories')}}" class="nav-link"><i data-feather="command" class="w-7 h-7 text-blue-900"></i><span class="text-blue-600 px-2">Categories</span></a>
+                            <a href="{{route('getAllCategories')}}" class="nav-link bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"><i data-feather="command" class="w-7 h-7 text-blue-900"></i><span class="text-blue-600 px-2  ">Categories</span></a>
                         </li>
 
                         <li class="dropdown ">
@@ -290,6 +290,8 @@
 
     </div>
     </div>
+
+    
     <!-- General JS Scripts -->
     <script src="/assets/js/app.min.js"></script>
     <!-- JS Libraies -->
@@ -302,7 +304,15 @@
     <script src="/assets/js/custom.js"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     @stack('scripts')
-
+    <script>
+        const currentLocation = location.href;
+        const menuItem = document.querySelectionAll('a');
+        const menuLength = menuItem.length
+        for(let i=0; i<menuLength;i++){
+          if(  menuItem[i].href === currentLocation){
+          menuItem[i].class ="active"
+        }}
+    </script>
 </body>
 
 
