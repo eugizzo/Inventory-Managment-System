@@ -19,12 +19,12 @@
     <link rel="stylesheet" href="/assets/css/custom.css">
     <!-- // -->
 
-     <!-- fontawesome -->
+    <!-- fontawesome -->
 
-     <link href="/assetss/fontawesome/css/fontawesome.css" rel="stylesheet">
-  <link href="/assetss/fontawesome/css/brands.css" rel="stylesheet">
-  <link href="/assetss/fontawesome/css/solid.css" rel="stylesheet">
-  <!-- tailwind css -->
+    <link href="/assetss/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/assetss/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/assetss/fontawesome/css/solid.css" rel="stylesheet">
+    <!-- tailwind css -->
     <link rel="stylesheet" href="/assets/css/app.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Template CSS -->
@@ -44,7 +44,7 @@
     <div class="loader"></div>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
-            
+
 
 
             <nav class="navbar navbar-expand-lg main-navbar sticky">
@@ -58,29 +58,27 @@
                 </div>
                 <div class="navbar-nav navbar-right ">
                     @if(Auth::user()->gender == 'female')
-           <div class="dropdown">
-           <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="/assets/img/users/user-1.png" class="user-img-radious-style">
-                            <span class="d-sm-none d-lg-inline-block"></span>
-                        </a></div> 
-                        @else
                     <div class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img  alt="image" src="/assets/img/users/user-8.png" class="user-img-radious-style">
+                            <img alt="image" src="/assets/img/users/user-1.png" class="user-img-radious-style">
                             <span class="d-sm-none d-lg-inline-block"></span></a>
-                        @endif
-                        <div class="dropdown-menu dropdown-menu-right pullDown ">
-                            <div class="dropdown-title text-2xl"> {{Auth::user()->firstName}}</div>
-                            <div class="dropdown-divider"></div>
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="px-2">
-                                <h1 class="text-xl px-8"><i class="fa fa-sign-out-alt" aria-hidden="true"></i><span class="px-2">Logout</span></h1>
-                            </a>
+                        @else
+                        <div class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <img alt="image" src="/assets/img/users/user-8.png" class="user-img-radious-style">
+                                <span class="d-sm-none d-lg-inline-block"></span></a>
+                            @endif
+                            <div class="dropdown-menu dropdown-menu-right pullDown ">
+                                <div class="dropdown-title text-2xl"> {{Auth::user()->firstName}}</div>
+                                <div class="dropdown-divider"></div>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="px-2">
+                                    <h1 class="text-xl px-8"><i class="fa fa-sign-out-alt" aria-hidden="true"></i><span class="px-2">Logout</span></h1>
+                                </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </div>
                         </div>
-</div>
-</div>
+                    </div>
 
             </nav>
 
@@ -106,9 +104,10 @@
                             </svg>
                         </div>
                         <div class="py-4">
-                         <span class="font-semibold text-4xl tracking-tight z-20 font-italic" >Inventory_MS</span>
-                        </span>
-                    </div></div>
+                            <span class="font-semibold text-4xl tracking-tight z-20 font-italic">Inventory_MS</span>
+                            </span>
+                        </div>
+                    </div>
                     <ul class="sidebar-menu py-4" id="sidebar">
                         <!-- <li class="menu-header"><h4 class="text-xl px-4">Main</h4></li> -->
 
@@ -134,7 +133,7 @@
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
                             <a href="{{route('getAllBrands')}}" class="nav-link">
-                             <ion-icon name="clipboard" class=""></ion-icon><span class="text-blue-600 px-4">Brands</span>
+                                <ion-icon name="clipboard" class=""></ion-icon><span class="text-blue-600 px-4">Brands</span>
                             </a>
                         </li>
                         l @endif
