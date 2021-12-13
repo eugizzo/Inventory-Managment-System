@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/login/assets/css/login.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- fontawesome -->
+    <link href="/assetss/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/assetss/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/assetss/fontawesome/css/solid.css" rel="stylesheet">
 </head>
 
 <body>
@@ -18,6 +23,7 @@
         <div class="container">
             <div class="card login-card">
                 <div class="row no-gutters">
+                    
                     <div class="col-md-5">
                         <img src="https://i1.wp.com/www.pival.com/wp-content/uploads/2017/08/inventory-management-system.jpg?fit=1500%2C1000&ssl=1" alt="login" class="login-card-img">
                     </div>
@@ -26,7 +32,7 @@
                             <!-- <div class="brand-wrapper">
                                 <img src="/login/assets/images/logo.svg" alt="logo" class="logo">
                             </div> -->
-                            <p class="login-card-description">Sign into your account</p>
+                            <p class="login-card-description text-bold ">Sign into your account</p>
                             <form action="{{route('checkLogin')}}" method="POST">
                                 @csrf
                                 @foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -48,13 +54,14 @@
                                 @endif
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Email</label>
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required="" value="{{old('email')}}">
+                            
+                                    <input type="email" name="email" id="email" class="form-control"  placeholder="Email address" required="" value="{{old('email')}}">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="sr-only">Password</label>
                                     <input type="password" name="password" id="password" class="form-control" placeholder="***********" required="">
                                 </div>
-                                <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
+                                <input  name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
                             </form>
                             <!-- <p class="login-card-footer-text">Don't have an account? <a href="/register" class="text-reset">Register here</a></p> -->
                             <nav class="login-card-footer-nav">

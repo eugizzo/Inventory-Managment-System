@@ -51,7 +51,7 @@ body {
 }
 
 .form-body .label-title {
-  color:#1BBA93;
+  color:#3755df;
   font-size: 17px;
   font-weight: bold;
 }
@@ -140,7 +140,7 @@ input[type="file"] {
 
 .btn:hover {
   background-color: #169c7b;
-  color:white;
+  color:rgb(53, 56, 230);
 }
 
 

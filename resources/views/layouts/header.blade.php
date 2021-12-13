@@ -19,7 +19,12 @@
     <link rel="stylesheet" href="/assets/css/custom.css">
     <!-- // -->
 
+     <!-- fontawesome -->
 
+     <link href="/assetss/fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="/assetss/fontawesome/css/brands.css" rel="stylesheet">
+  <link href="/assetss/fontawesome/css/solid.css" rel="stylesheet">
+  <!-- tailwind css -->
     <link rel="stylesheet" href="/assets/css/app.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Template CSS -->
@@ -39,10 +44,10 @@
     <div class="loader"></div>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
-            <div class="navbar"></div>
+            
 
 
-            e <nav class="navbar navbar-expand-lg main-navbar sticky">
+            <nav class="navbar navbar-expand-lg main-navbar sticky">
                 <div class="form-inline mr-auto">
                     <ul class="navbar-nav">
                         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
@@ -51,31 +56,31 @@
                     </ul>
 
                 </div>
-                <ul class="navbar-nav navbar-right ">
+                <div class="navbar-nav navbar-right ">
                     @if(Auth::user()->gender == 'female')
-
-                    <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="/assets/img/users/user-8.png" class="user-img-radious-style">
+           <div class="dropdown">
+           <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            <img alt="image" src="/assets/img/users/user-1.png" class="user-img-radious-style">
                             <span class="d-sm-none d-lg-inline-block"></span>
-                        </a>
+                        </a></div> 
                         @else
-                    <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="/assets/img/users/user-8.png" class="user-img-radious-style">
+                    <div class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            <img  alt="image" src="/assets/img/users/user-8.png" class="user-img-radious-style">
                             <span class="d-sm-none d-lg-inline-block"></span></a>
                         @endif
-                        <div class="dropdown-menu dropdown-menu-right pullDown text">
-                            <div class="dropdown-title ">{{Auth::user()->firstName}}</div>
+                        <div class="dropdown-menu dropdown-menu-right pullDown ">
+                            <div class="dropdown-title text-2xl"> {{Auth::user()->firstName}}</div>
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="px-2">
-                                <h1 class="text-xl">Logout</h1>
+                                <h1 class="text-xl px-8"><i class="fa fa-sign-out-alt" aria-hidden="true"></i><span class="px-2">Logout</span></h1>
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
                         </div>
-                    </li>
-                </ul>
+</div>
+</div>
 
             </nav>
 
@@ -89,9 +94,9 @@
                     <!-- </a> -->
                     <!-- </div> -->
 
-                    <div class="flex ">
+                    <div class="flex">
                         <div>
-                            <svg class="px-2 " xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 172 172">
+                            <svg class="px-2 " xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 172 172">
                                 <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none">
                                     <path d="M0,172v-172h172v172z" fill="none"></path>
                                     <g fill="#e67e22">
@@ -100,20 +105,21 @@
                                 </g>
                             </svg>
                         </div>
-                        <div class="py-4"> <span class="font-semibold text-4xl tracking-tight ">Inventory_MS</span>
-                        </div>
-                    </div>
-                    <ul class="sidebar-menu py-4">
+                        <div class="py-4">
+                         <span class="font-semibold text-4xl tracking-tight z-20 font-italic" >Inventory_MS</span>
+                        </span>
+                    </div></div>
+                    <ul class="sidebar-menu py-4" id="sidebar">
                         <!-- <li class="menu-header"><h4 class="text-xl px-4">Main</h4></li> -->
 
                         <!-- /// -->
                         @if(Auth::user()->role == 'admin')
                         <li class="dropdown active">
-                            <a href="{{route('getLandingPage')}}" class="nav-link"><i data-feather="monitor"></i><span class=" hover:text-indigo-600">Dashboard</span></a>
+                            <a href="{{route('getLandingPage')}}" class="nav-link"><i class="fa fa-tachometer-alt" aria-hidden="true"></i><span class=" hover:text-blue-600">Dashboard</span></a>
                         </li>
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
-                            <a href="{{route('getUsers')}}" class="nav-link"><i data-feather="user-check" class="text-black-700"></i><span class="text-blue-600">Users</span></a>
+                            <a href="{{route('getUsers')}}" class="nav-link"><i class="fa fa-user-alt" aria-hidden="true"></i><span class="text-blue-600">Users</span></a>
                         </li>
 
                         <li class="dropdown ">
@@ -128,79 +134,71 @@
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
                             <a href="{{route('getAllBrands')}}" class="nav-link">
-                                <ion-icon name="clipboard" class="px-2"></ion-icon><span class="text-blue-600">Brands</span>
+                             <ion-icon name="clipboard" class=""></ion-icon><span class="text-blue-600 px-4">Brands</span>
                             </a>
                         </li>
                         l @endif
                         @if(Auth::user()->role == 'owner')
                         <li class="dropdown">
-                            <a href="{{route('getOwnerLandingPage',Auth::user()->company->id)}}" class="nav-link"><i data-feather="monitor" class=" w-7 h-7 text-blue-900"></i><span class="">Dashboard</span></a>
+                            <a href="{{route('getOwnerLandingPage',Auth::user()->company->id)}}" class="nav-link"><i class="fa fa-tachometer-alt" aria-hidden="true"></i><span class=" text-blue-600">Dashboard</span></a>
                         </li>
                         <li class="dropdown ">
                             <a href="{{route('getCompanyBranches',Auth::user()->company->id)}}" class="nav-link">
-                                <ion-icon name="md-git-branch" class=" text-blue-900 px-1 w-7 h-7"></ion-icon> <span class="">Branches</span>
+                                <ion-icon name="md-git-branch" class=" text-blue-900 px-1 w-7 h-7"></ion-icon> <span class="text-blue-600 px-4">Branches</span>
                             </a>
                         </li>
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
-                            <a href="{{route('getAllCategories')}}" class="nav-link"><i data-feather="command" class="w-7 h-7 text-blue-900"></i><span class="">Categories</span></a>
+                            <a href="{{route('getAllCategories')}}" class="nav-link"><i data-feather="command" class="w-7 h-7 text-blue-900"></i><span class="text-blue-600 px-2">Categories</span></a>
                         </li>
 
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
                             <a href="{{route('getAllBrands')}}" class="nav-link">
-                                <ion-icon name="clipboard" class="p-1 w-7 h-7 text-blue-900"></ion-icon><span class="">Brands</span>
+                                <ion-icon name="clipboard" class="p-1 w-7 h-7 text-blue-900"></ion-icon><span class="text-blue-600 px-4">Brands</span>
                             </a>
                         </li>
+
+
                         <li class="dropdown ">
-                            <a href="{{route('getCompanyProducts',Auth::user()->company->id)}}" class="nav-link"><svg class="w-6 h-6 text-blue-900 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
-                                </svg><span class="">Products</span></a>
+                            <a href="{{route('getCompanyProducts',Auth::user()->company->id)}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="text-blue-600">Products</span></a>
                         </li>
 
                         <li class="dropdown ">
-                            <a href="{{route('profitChart')}}" class="nav-link"><svg class="w-6 h-6 text-blue-900 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
-                                </svg><span class="">Charts</span></a>
+                            <a href="{{route('profitChart')}}" class="nav-link"><i class="fa fa-chart-bar" aria-hidden="true"></i><span class="text-blue-600">Charts</span></a>
                         </li>
 
                         @endif
 
                         @if(Auth::user()->role == 'manager')
                         <li class="dropdown ">
-                            <a href="{{route('getCompanyProducts',Auth::user()->branch->company_id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-600">Products</span></a>
+                            <a href="{{route('getCompanyProducts',Auth::user()->branch->company_id)}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="text-blue-600">Products</span></a>
                         </li>
                         <li class="dropdown ">
                             <a href="{{route('getAddManyStocks')}}" class="nav-link"><i class="fa fa-plus"></i><span class="text-blue-600">Add a stock</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getStock',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-black">View Stock</span></a>
+                            <a href="{{route('getStock',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="text-blue-600">View Stock</span></a>
 
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getBranchStockIn',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-600">View StockIn history</span></a>
+                            <a href="{{route('getBranchStockIn',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="text-blue-600">View StockIn history</span></a>
                         </li>
                         <li class="dropdown ">
                             <a href="{{route('getSellStocks',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-600">Make Sales</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getBranchStockOut',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-600">Sales</span></a>
+                            <a href="{{route('getBranchStockOut',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-chart-line" aria-hidden="true"></i><span class="text-blue-600">Sales</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('SalesPurchaseChart')}}" class="nav-link"><i data-feather="monitor"></i><span>Statistics</span></a>
+                            <a href="{{route('SalesPurchaseChart')}}" class="nav-link"><i class="fa fa-chart-bar" aria-hidden="true"></i><span class="text-blue-600">Statistics</span></a>
                         </li>
-
-
-
                         @endif
                     </ul>
                 </aside>
             </div>
             <!-- Main Content -->
             @yield('content')
-
 
             <div class="settingSidebar">
                 <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>

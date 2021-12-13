@@ -77,7 +77,7 @@
                 <label class="label-title">Manager Gender*:</label>
                 <div class="input-group">
                     <label for="male"><input type="radio" name="gender" value="male" id="male" @if(old('gender')=="male" ) checked @endif> Male</label>
-                    <label for="female"><input type="radio" name="gender" value="female" id="female" @if(old('gender')=="female" ) checked @endif> Female</label>
+                    <label for="female"><input class="space-x-8" type="radio" name="gender" value="female" id="female" @if(old('gender')=="female" ) checked @endif> Female</label>
                 </div>
             </div>
             <div class="form-group right">

@@ -1,6 +1,7 @@
  @extends('layouts.header')
 
  @section('content')
+  <link href="{{asset('css/app.css') }}" rel="stylesheet">
  <div class="main-content">
      <section class="section">
          <div class="row">
@@ -13,40 +14,41 @@
                  </div>
                  @endif
                  @endforeach
+                 <h4 class="text-4xl font-bold text-blue-600 font-italic px-8 py-12 ">List of Companies</h4>
                  <div class="card">
 
 
-                     <div class="card-header d-flex justify-content-between">
-                         <h4>List of Companies</h4>
+                     <!-- <div class="card-header d-flex justify-content-between">
+                         
                          <div style="float:right; position: relative;">
                              <a style="align-items: right;" href="{{route('getAddCompany')}}" class="btn btn-outline-primary">Register Company</a>
                          </div>
-                     </div>
+                     </div> -->
                      <div class="card-body p-0">
                          <div class="table-responsive">
                              <table class="table table-striped" id="example" class="display">
-                                 <tr>
-                                 <th class="px-4 py-3 text-base">#</th>
-                                     <th class="px-4 py-3 text-base">Company Name</th>
-                                     <th class="px-4 py-3 text-base">Company Status</th>
-                                     <th class="px-4 py-3 text-base">Company Location</th>
-                                     <th class="px-4 py-3 text-base">Owner Names</th>
-                                     <th class="px-4 py-3 text-base">Owner Email</th>
-                                     <th class="px-4 py-3 text-base">Owner Phone Number</th>
-                                     <th class="px-4 py-3 text-base">Owner Gender</th>
-                                     <th class="px-4 py-3 text-base">Owner Dob</th>
-                                     <th class="px-4 py-3 text-base">Owner Status</th>
-                                     <th class="px-4 py-3 text-base">Actions</th>
+                                 <tr class="bg-blue-600">
+                                     <th class="px-4 py-3 text-xl text-blue-white">#</th>
+                                     <th class="px-4 py-3 text-xl text-blue-white">Company Name</th>
+                                     <th class="px-4 py-3 text-xl text-blue-white">Company Status</th>
+                                     <th class="px-4 py-3 text-xl text-blue-white">Company Location</th>
+                                     <th class="px-4 py-3 text-xl text-blue-white">Owner Names</th>
+                                     <th class="px-4 py-3 text-xl text-blue-white">Owner Email</th>
+                                     <th class="px-8 py-3 text-xl text-blue-white">Owner Phone No</th>
+                                     <th class="px-4 py-3 text-xl text-blue-white">Owner Gender</th>
+                                     <th class="px-4 py-3 text-xl text-blue-white">Owner Dob</th>
+                                     <th class="px-4 py-3 text-xl text-blue-white">Owner Status</th>
+                                     <th class="px-4 py-3 text-xl text-blue-white">Actions</th>
                                  </tr>
                                  @forelse ($companies as $company)
                                  <tr>
-                                 <td class="align-middle px-4 text-base">
+                                 <td class="align-middle px-4 text-xl">
                                          {{$company->id}}
                                      </td>
-                                     <td class="align-middle px-8 text-base">
+                                     <td class="align-middle px-8 text-xl">
                                          {{$company->name}}
                                      </td>
-                                     <td class="align-middle px-4 text-base">
+                                     <td class="align-middle px-4 text-xl">
                                          <a href="{{route('changeCompanyStatus',$company->id)}}" @if($company->status == 'active')
                                              class="badge badge-success">{{$company->status}}
                                              @else
@@ -54,28 +56,28 @@
                                              @endif
                                          </a>
                                      </td>
-                                     <td class="align-middle px-4 text-base">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$company->location}}
                                      </td>
                                      <td class="align-middle px-4">
                                          {{$company->user->firstName}} {{$company->user->lastName}}
                                      </td>
-                                     <td class="align-middle px-4 text-base">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$company->user->email}}
                                      </td>
-                                     <td class="align-middle px-4 text-base">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$company->user->phoneNumber}}
                                      </td>
-                                     <td class="align-middle px-4 text-base">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$company->user->gender}}
                                      </td>
-                                     <td class="align-middle px-12 text-base">
+                                     <td class="align-middle px-12 text-xl">
                                          {{$company->user->dob}}
                                      </td>
 
-                                     <td class="align-middle px-4 text-base">
+                                     <td class="align-middle px-4 text-xl">
 
-                                         <div class="flex items-center space-x-4 text-sm">
+                                         <div class="flex items-center space-x-4 text-xl">
 
                                              <a href="{{route('changeUserStatus',$company->user->id)}}" @if($company->user->status == 'active')
                                                  class="badge badge-success">{{$company->user->status}}
@@ -115,12 +117,14 @@
              </div>
          
 
+                <div class="  relative">
+                    <div style="float:right; position: relative; " class="relative animate-pulse">
+                        <a style="align-items: right;" href="{{route('getAddCompany')}}" class="py-8 bg-blue-600 text-xl text-white rounded-full px-2 fixed bottom-24 right-12"><ion-icon name="add" class="mt-2"></ion-icon>Add Company</a>
+                    </div>
 
-         <div class="flex justify-end px-96 ml-96 fixed mt-96">
-         <div class=" animate-pulse py-56 " style="float:right; position: relative;">
-            <a style="align-items: right;" href="{{route('getAddCategory')}}" class="py-8 bg-blue-700 text-xl text-white rounded-full px-2 "><ion-icon name="add" class="mt-2"></ion-icon>Add Company</a>
-         </div>
-</div></div>
+                </div>
+
+
          <script type="text/javascript">
     $(document).ready(function() {
     $('#example').DataTable();

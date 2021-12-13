@@ -47,23 +47,23 @@
                                      <td class="align-middle px-4 text-xl">
                                          {{$user->firstName}}
                                      </td>
-                                     <td class="align-middle px-4 text-base">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$user->lastName}}
                                      </td>
-                                     <td class="align-middle px-4 text-base">
+                                     <td class="align-middle px-4 text-xl">
                                          {{ $user->email}}
                                      </td>
-                                     <td class="align-middle px-4 text-base">
+                                     <td class="align-middle px-4 text-xl">
                                          {{ $user->phoneNumber}}
                                      </td>
-                                     <td class="align-middle px-4 text-base">
+                                     <td class="align-middle px-4 text-xl">
                                          {{ $user->gender}}
                                      </td>
-                                     <td class="align-middle px-4 text-base">
+                                     <td class="align-middle px-4 text-xl">
                                          {{ $user->dob}}
                                      </td>
-                                     <td class="align-middle px-4 text-base">
-                                         <div class="flex items-center space-x-4 text-sm text-white text-bold text-base">
+                                     <td class="align-middle px-4 text-xl">
+                                         <div class="flex items-center space-x-4 text-xl text-white text-bold text-base">
 
                                              <a href="{{route('changeUserStatus', $user->id)}}" @if( $user->status == 'active')
                                                  class="badge badge-success">{{ $user->status}}

@@ -1,11 +1,13 @@
+
 <link href="/resources/css/button.css">
+<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
  @extends('layouts.header')
 
  @section('content')
  <div class="main-content">
      <section class="section">
          <div class="row">
-             <div class="col-12">
+                <div class="col-12">
                  @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                  @if(Session::has($msg))
                  <div class="alert alert-{{ $msg }} alert-dismissible" role="alert">
@@ -15,26 +17,30 @@
                  @endif
                  @endforeach
 
-                 <div class=" d-flex justify-content-between py-4">
-                         <h4 class="flex justify-center text-2xl font-bold text-blue-500 px-12">List of Categories</h4>
-                         <!-- <div style="float:right; position: relative;">
-                             <a style="align-items: right;" href="{{route('getAddCategory')}}" class="py-2 bg-blue-700 text-xl text-white rounded px-2">Register Category</a>
-                         </div> -->
+                 <div class=" d-flex justify-content-between">
+                         <h4 class="text-4xl font-bold text-blue-600 font-italic px-8 py-12">List of Categories</h4>
+                         <!-- <div style="float:right; position: relative;"> -->
+                             <!-- <a style="align-items: right;" href="{{route('getAddCategory')}}" class="py-2 bg-blue-700 text-xl text-white rounded px-2">Register Category</a> -->
+                         <!-- </div> -->
                          
                      </div>
                  <div class="card">
                      
-                     <div class="card-body p-0">
+                     <div class="card-body">
                          <div class="table-responsive">
                              <table class=" table table-striped table-responsive" id="example">
                                  <tr>
-                                     <th class="px-4 py-3 text-xl font-bold ">Category Name</th>
-                                     <th class="px-4 py-3 text-xl font-bold ">Category Unity</th>
-                                     <th class="px-4 py-3 text-xl font-bold ">Date</th>
-                                     <th class="px-4 py-3 text-xl font-bold ">Actions</th>
+                                    <th class="px-4 py-3 text-2xl font-bold ">#</th>
+                                     <th class="px-4 py-3 text-2xl font-bold ">Category Name</th>
+                                     <th class="px-4 py-3 text-2xl font-bold ">Category Unity</th>
+                                     <th class="px-4 py-3 text-2xl font-bold ">Date</th>
+                                     <th class="px-4 py-3 text-2xl font-bold ">Actions</th>
                                  </tr>
                                  @forelse ($categories as $category)
                                  <tr>
+                                 <td class=" px-4 text-xl ">
+                                         {{$category->id}}
+                                     </td>
                                      <td class=" px-4 text-xl ">
                                          {{$category->name}}
                                      </td>
@@ -68,15 +74,17 @@
                          </div>
                      </div>
                  </div>
-             </div>
-         </div>
-<div class=" py-64">
-         <div style="float:right; position: relative; py-12 " class="animate-pulse fixed ">
-            <a style="align-items: right;" href="{{route('getAddCategory')}}" class="py-8 bg-blue-700 text-xl text-white rounded-full px-2 "><ion-icon name="add" class="mt-2"></ion-icon>Add Category</a>
-         </div>
-</div>
-         
-      
+                    </div>
+                </div>
+
+
+              
+
+            <div class="relative">
+                <div class="fixed bottom-48 right-48 ">
+                    <a style="align-items: right;" href="{{route('getAddCategory')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-2 fixed "><i class="fa fa-plus" aria-hidden="true"></i> Add Category</a>
+               </div>
+            <div>
     
          @endsection
 
