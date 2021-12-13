@@ -1,3 +1,7 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+  
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+ 
  @extends('layouts.header')
 
  @section('content')
@@ -20,10 +24,10 @@
                      </div>
                      <div class="card-body p-0">
                          <div class="table-responsive">
-                             <table class="table table-striped">
+                             <table class="table table-striped " id="example">
                                  <tr>
                                      <th class="px-4 py-3">Date</th>
-                                     <th class="px-4 py-3">Details
+                                     <th class="px- py-3">Details
                                          <table class="table table-striped">
                                              <tr>
                                                  <td class="align-middle">
@@ -49,7 +53,7 @@
                                          {{$stock->created_at}}
                                      </td>
                                      <td class="align-middle">
-                                         <table class="table table-striped">
+                                         <table class="table table-striped" id="example">
                                              @foreach ($stock->products as $one)
                                              <tr>
                                                  <td class="align-middle">
@@ -58,10 +62,10 @@
                                                  <td class="align-middle">
                                                      {{$one->pivot->purchasedQuantity}}
                                                  </td>
-                                                 <td class="align-middle">
+                                                 <td class="align-middle px -12">
                                                      {{$one->pivot->unityPrice}}
                                                  </td>
-                                                 <td class="align-middle">
+                                                 <td class="align-middle px-12">
                                                      {{$one->pivot->supplier}}
                                                  </td>
                                              </tr>
@@ -81,4 +85,8 @@
                  </div>
              </div>
          </div>
-         @endsection
+      <script>
+         $(document).ready( function () {
+    $('#example').DataTable();
+} );</script>
+@endsection
