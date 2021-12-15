@@ -60,6 +60,7 @@
                  </div>
              </div>
          </div>
+
          @if(Auth::user()->role == 'manager')
          <div class="relative">
              <div class="fixed bottom-48 right-48 ">
