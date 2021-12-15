@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="fixed bottom-48 right-48 ">
-            <a style="align-items: right;" href="{{route('getAddCategory')}}')}}" class="animate-pulse  py-8 bg-blue-600 text-xl text-white text-red-100 rounded-full px-8 fixed text-blue-600 hover:text-blue-700 transition duration-150 ease-in-out" data-bs-toggle="tooltip" data-bs-placement="left" title="Please add category !"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+            <a style="align-items: right;" href="{{route('getAddCategory')}}" class="animate-pulse  py-8 bg-blue-600 text-xl text-white text-red-100 rounded-full px-8 fixed text-blue-600 hover:text-blue-700 transition duration-150 ease-in-out" data-bs-toggle="tooltip" data-bs-placement="left" title="Please add category !"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 
         </div>
         @endsection

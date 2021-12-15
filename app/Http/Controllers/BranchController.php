@@ -79,7 +79,7 @@ class BranchController extends Controller
             } catch (Exception $e) {
             }
             if ($result) {
-                return redirect()->route("getCompanyBranches", Auth::user()->company->id)->with('success', 'Branch saved successsfully');
+                return redirect()->route("getCompanyBranches", Crypt::encrypt(Auth::user()->company->id))->with('success', 'Branch saved successsfully');
             } else {
                 return redirect()->back()->with('warning', 'Branch saving failed');
             }

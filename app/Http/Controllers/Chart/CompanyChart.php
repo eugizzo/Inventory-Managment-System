@@ -89,6 +89,11 @@ class CompanyChart extends Controller
     public function branchProfit()
     {
         $branches = Branch::where('company_id', Auth::user()->company->id)->get();
+        if(count($branches)<=0){
+            return redirect()->back()->with('warning', 'statistics are not present as company has no branch');
+        }
+                    $remainingValue = [];
+            $profitValue = [];
         foreach ($branches as $branch) {
             $this->branchName[] = $branch->name;
             //get total sales
@@ -119,7 +124,6 @@ class CompanyChart extends Controller
                     ->select('purchasedQuantity', 'unityPrice')
                     ->orderByDesc('product_stock_in.created_at')
                     ->get();
-
                 $remainingQuantity  = $stock->remainingQuantity;
                 $totalRemaining = 0;
                 foreach ($stockIns as $stock) {
@@ -140,8 +144,6 @@ class CompanyChart extends Controller
                 $sumRemainingStock += $remainingValue[$i];
                 $sumprofitValue += $profitValue[$i];
             }
-            $remainingValue = [];
-            $profitValue = [];
             $this->totalRemainingStock[] = $sumRemainingStock;
             $this->totalprofitValue[]  =  $sumprofitValue;
         }
