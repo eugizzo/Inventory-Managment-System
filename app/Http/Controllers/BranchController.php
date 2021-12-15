@@ -9,6 +9,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -88,6 +89,7 @@ class BranchController extends Controller
     }
     public function getUpdateBranch($id)
     {
+        $id = Crypt::decrypt($id);
         $branch = branch::where("id", $id)->first();
         if ($branch) {
             return view('branch.updateBranch', ['branch' => $branch]);
@@ -116,7 +118,7 @@ class BranchController extends Controller
                 'name' => $request->name
             ]);
             if ($result) {
-                return redirect()->route("getCompanyBranches", $branch->company_id)->with('success', 'Branch updated successsfully');
+                return redirect()->route("getCompanyBranches", Crypt::encrypt($branch->company_id))->with('success', 'Branch updated successsfully');
             } else {
                 return redirect()->back()->with('warning', 'operation failed!');
             }
@@ -126,6 +128,7 @@ class BranchController extends Controller
     }
     public function getChangeManager($id)
     {
+        $id = Crypt::decrypt($id);
         return view('branch.changeManager', ['id' => $id]);
     }
     public function changeManager(Request $request)
@@ -176,7 +179,7 @@ class BranchController extends Controller
                             'user_id' => $user->id
                         ]);
                         if ($result) {
-                            return redirect()->route("getCompanyBranches", $branch->company_id)->with('success', 'Branch manager changed successfully');
+                            return redirect()->route("getCompanyBranches", Crypt::encrypt($branch->company_id))->with('success', 'Branch manager changed successfully');
                         } else {
                             return redirect()->back()->with('warning', 'branch manager update failed');
                         }
@@ -194,6 +197,7 @@ class BranchController extends Controller
 
     public function changeBranchStatus($id)
     {
+        $id = Crypt::decrypt($id);
         $branch = Branch::where('id', $id)->first();
         if ($branch) {
             if ($branch->status == "active") {
@@ -214,6 +218,7 @@ class BranchController extends Controller
 
     public function deleteBranch($id)
     {
+        $id = Crypt::decrypt($id);
         $branch = Branch::where("id", $id)->first();
         $stockin = StockIn::where("branch_id", $id)->first();
         if ($stockin) {
@@ -226,7 +231,7 @@ class BranchController extends Controller
                 $result =  $user->delete();
             }
             if ($result && $results) {
-                return redirect()->route("getCompanyBranches", $branch->company_id)->with('success', 'Branch deleted successsfully');
+                return redirect()->route("getCompanyBranches", Crypt::encrypt($branch->company_id))->with('success', 'Branch deleted successsfully');
             } else {
                 return redirect()->back()->with('warning', 'branch deletion failed!');
             }

@@ -37,26 +37,28 @@
     <link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-    
-    
+
+
 </head>
 
 <body>
     @livewireScripts
 
     <style>
- .sidebar ul li .ui-nav-active span {
-  background: black;
-  border: yellow;
-  line-height: 90px;
-  border-bottom: none;
-}
-.sidebar ul li .ui-nav-active a {
-  color: yellow;
-}
-.sidebar ul li .ui-nav-active span {
-  color: #1e1e1e;
-}
+        .sidebar ul li .ui-nav-active span {
+            background: black;
+            border: yellow;
+            line-height: 90px;
+            border-bottom: none;
+        }
+
+        .sidebar ul li .ui-nav-active a {
+            color: yellow;
+        }
+
+        .sidebar ul li .ui-nav-active span {
+            color: #1e1e1e;
+        }
     </style>
     <div class="loader"></div>
     <div id="app">
@@ -156,10 +158,10 @@
                         l @endif
                         @if(Auth::user()->role == 'owner')
                         <li class="dropdown">
-                            <a href="{{route('getOwnerLandingPage',Auth::user()->company->id)}}" class="nav-link"><i class="fa fa-tachometer-alt" aria-hidden="true"></i><span class=" ">Dashboard</span></a>
+                            <a href="{{route('getOwnerLandingPage',Crypt::encrypt(Auth::user()->company->id))}}" class="nav-link"><i class="fa fa-tachometer-alt" aria-hidden="true"></i><span class=" ">Dashboard</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getCompanyBranches',Auth::user()->company->id)}}" class="nav-link">
+                            <a href="{{route('getCompanyBranches',Crypt::encrypt(Auth::user()->company->id))}}" class="nav-link">
                                 <ion-icon name="md-git-branch" class=" text-blue-900 px-1 w-7 h-7"></ion-icon> <span class="text-blue-600 px-4">Branches</span>
                             </a>
                         </li>
@@ -177,7 +179,7 @@
 
 
                         <li class="dropdown ">
-                            <a href="{{route('getCompanyProducts',Auth::user()->company->id)}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="">Products</span></a>
+                            <a href="{{route('getCompanyProducts',Crypt::encrypt(Auth::user()->company->id))}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="">Products</span></a>
                         </li>
 
                         <li class="dropdown ">
@@ -188,26 +190,26 @@
 
                         @if(Auth::user()->role == 'manager')
                         <li class="dropdown ">
-                            <a href="{{route('getCompanyProducts',Auth::user()->branch->company_id)}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="">Products</span></a>
+                            <a href="{{route('getCompanyProducts',Crypt::encrypt(Auth::user()->branch->company_id))}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="">Products</span></a>
                         </li>
                         <li class="dropdown ">
                             <a href="{{route('getAddManyStocks')}}" class="nav-link"><i class="fa fa-plus"></i><span class=" style">Add a stock</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getStock',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="">View Stock</span></a>
+                            <a href="{{route('getStock',Crypt::encrypt(Auth::user()->branch->id))}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="">View Stock</span></a>
 
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getBranchStockIn',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="">View StockIn history</span></a>
+                            <a href="{{route('getBranchStockIn',Crypt::encrypt(Auth::user()->branch->id))}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="">View StockIn history</span></a>
                         </li>
                         <li class="dropdown style">
-                            <a href="{{route('getSellStocks',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="">Make Sales</span></a>
+                            <a href="{{route('getSellStocks',Crypt::encrypt(Auth::user()->branch->id))}}" class="nav-link"><i data-feather="monitor"></i><span class="">Make Sales</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a  href="{{route('getBranchStockOut',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-chart-line" aria-hidden="true"></i><span class="" onclick="switchColors(this);">Sales</span></a>
+                            <a href="{{route('getBranchStockOut',Crypt::encrypt(Auth::user()->branch->id))}}" class="nav-link"><i class="fa fa-chart-line" aria-hidden="true"></i><span class="" onclick="switchColors(this);">Sales</span></a>
                         </li>
                         <li class="dropdown style">
-                            <a  href="{{route('SalesPurchaseChart')}}" class="nav-link"><i class="fa fa-chart-bar" aria-hidden="true"></i><span class="" onclick="switchColors(this);" >Statistics</span></a>
+                            <a href="{{route('SalesPurchaseChart')}}" class="nav-link"><i class="fa fa-chart-bar" aria-hidden="true"></i><span class="" onclick="switchColors(this);">Statistics</span></a>
                         </li>
                         @endif
                     </ul>
@@ -223,19 +225,15 @@
     </div>
 
     <script>
-  function switchColors(element)  
-{  
-links=document.getElementsByTagName("a") ;  
-for (var i = 1 ; i < links.length ; i ++)  
-links.item(i).style.color = 'black' ;  
-element.style.color='blue' ;  
- 
-
-}   
+        function switchColors(element) {
+            links = document.getElementsByTagName("a");
+            for (var i = 1; i < links.length; i++)
+                links.item(i).style.color = 'black';
+            element.style.color = 'blue';
 
 
-
-</script>
+        }
+    </script>
 
 
 
@@ -253,7 +251,7 @@ element.style.color='blue' ;
     <script src="/assets/js/custom.js"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     @stack('scripts')
-   
+
 </body>
 
 

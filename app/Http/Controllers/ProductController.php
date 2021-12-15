@@ -6,9 +6,12 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Product;
+use App\Models\Stock;
 use App\Models\StockIn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
+
 use Illuminate\Support\Facades\Validator;
 
 
@@ -42,13 +45,14 @@ class ProductController extends Controller
         $product->user_id = Auth::user()->id;
         $result = $product->save();
         if ($result) {
-            return redirect()->route("getCompanyProducts", Auth::user()->company->id)->with('success', 'Product saved successsfully');
+            return redirect()->route("getCompanyProducts", Crypt::encrypt(Auth::user()->company->id))->with('success', 'Product saved successsfully');
         } else {
             return redirect()->back()->with('warning', 'Product saving failed!');
         }
     }
     public function getCompanyProducts($id)
     {
+        $id = Crypt::decrypt($id);
         $company = Company::where('id', $id)->first();
         if ($company) {
             $products = product::where('company_id', $id)->get();
@@ -59,6 +63,7 @@ class ProductController extends Controller
     }
     public function getUpdateProduct($id)
     {
+        $id = Crypt::decrypt($id);
         $product = product::where("id", $id)->first();
         $categories = category::all();
         $brands = brand::all();
@@ -93,7 +98,7 @@ class ProductController extends Controller
                 'user_id' => Auth::user()->id,
             ]);
             if ($result) {
-                return redirect()->route("getCompanyProducts", Auth::user()->company->id)->with('success', 'Product updated successsfully');
+                return redirect()->route("getCompanyProducts", Crypt::encrypt(Auth::user()->company->id))->with('success', 'Product updated successsfully');
             } else {
                 return redirect()->back()->with('warning', 'product update failed!');
             }
@@ -104,15 +109,16 @@ class ProductController extends Controller
 
     public function deleteProduct($id)
     {
+        $id = Crypt::decrypt($id);
         $product = product::where("id", $id)->first();
-        $stockIn = StockIn::where("product_id", $id)->first();
+        $stockIn = Stock::where("product_id", $id)->first();
         if ($stockIn) {
             return redirect()->back()->with('warning', 'Product has Stocks registered');
         }
         if ($product) {
             $result = $product->delete();
             if ($result) {
-                return redirect()->route("getCompanyProducts", Auth::user()->company->id)->with('success', 'Product updated successsfully');
+                return redirect()->route("getCompanyProducts", Crypt::encrypt(Auth::user()->company->id))->with('success', 'Product updated successsfully');
             } else {
                 return redirect()->back()->with('warning', 'product deletion failed!');
             }

@@ -7,6 +7,7 @@ use App\Models\Stock;
 use App\Models\StockIn;
 use App\Models\StockOut as ModelsStockOut;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 
 class StockOut extends Component
@@ -117,7 +118,7 @@ class StockOut extends Component
                     ]);
                 }
             }
-            return redirect()->route('getBranchStockOut', Auth::user()->branch->id)->with('success', 'stockOut registered successfully');
+            return redirect()->route('getBranchStockOut', Crypt::encrypt(Auth::user()->branch->id))->with('success', 'stockOut registered successfully');
         } else {
             return redirect()->back()->with('warning', 'no stockOut to register');
         }

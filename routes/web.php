@@ -116,3 +116,7 @@ Route::group(['middleware' => ['owner']], function () {
     Route::post('updateProduct', [ProductController::class, ('updateProduct')])->name('updateProduct');
     Route::get('deleteProduct/{id}', [ProductController::class, ('deleteProduct')])->name('deleteProduct');
 });
+
+
+Route::prefix('admin')->name('admin.')->group(function () {
+});

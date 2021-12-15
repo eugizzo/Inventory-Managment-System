@@ -9,6 +9,7 @@ use App\Models\StockOut;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class StockInController extends Controller
 {
@@ -42,29 +43,32 @@ class StockInController extends Controller
 
     function getStock($id)
     {
+        $id = Crypt::decrypt($id);
         $stocks = Stock::where('branch_id', $id)->get();
         return view('stockIn.stocks', ['stocks' => $stocks]);
     }
     function getBranchStockIn($id)
     {
+        $id = Crypt::decrypt($id);
         $stockIn = StockIn::where('branch_id', $id)->get();
         return view('stockIn.branchStockIn', ['stockIn' => $stockIn]);
     }
 
-
     public function getSellStocks($id)
     {
+        $id = Crypt::decrypt($id);
         return view('stockOut');
     }
 
-
     function getBranchStockOut($id)
     {
+        $id = Crypt::decrypt($id);
         $stockOut = StockOut::where('branch_id', $id)->get();
         return view('stockIn.branchStockOut', ['stockOut' => $stockOut]);
     }
     public function invoice($id)
     {
+        $id = Crypt::decrypt($id);
         $stockOut = StockOut::where('branch_id', Auth::user()->branch->id)->where('id', $id)->first();
         return view('invoice.clientInvoice', ['stockOut' => $stockOut]);
     }

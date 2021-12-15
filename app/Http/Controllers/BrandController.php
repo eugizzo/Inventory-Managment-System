@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -34,6 +35,7 @@ class BrandController extends Controller
     }
     public function getUpdateBrand($id)
     {
+        $id = Crypt::decrypt($id);
         $brand = Brand::where("id", $id)->first();
         if ($brand) {
             return view('brand.updateBrand', ['brand' => $brand]);
@@ -70,6 +72,7 @@ class BrandController extends Controller
     }
     public function deleteBrand($id)
     {
+        $id = Crypt::decrypt($id);
         $brand = Brand::where("id", $id)->first();
         if ($brand) {
             $product = Product::where("brand_id", $id)->first();

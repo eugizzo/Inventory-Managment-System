@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -17,6 +18,7 @@ class UserController extends Controller
 {
     public function changeUserStatus($id)
     {
+        $id = Crypt::decrypt($id);
         $user = User::where('id', $id)->first();
         if ($user) {
             if ($user->status == "active") {
@@ -43,6 +45,7 @@ class UserController extends Controller
 
     public function getUpdateUser($id)
     {
+        $id = Crypt::decrypt($id);
         $user = User::where("id", $id)->first();
         if ($user) {
             return view('user.updateUser', compact('user'));
@@ -115,6 +118,7 @@ class UserController extends Controller
     }
     public function getOwnerLandingPage($id)
     {
+        $id = Crypt::decrypt($id);
         $branches = Branch::where('company_id', Auth::user()->company->id)->count();
         $products = Product::where('company_id', Auth::user()->company->id)->count();
         $topSelling = Product::where('company_id', Auth::user()->company->id)->get();

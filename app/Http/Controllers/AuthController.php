@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class AuthController extends Controller
 {
@@ -28,9 +29,9 @@ class AuthController extends Controller
                 if (Auth::user()->role === "admin") {
                     return  redirect('getLandingPage');
                 } else if (Auth()->user()->role == "owner") {
-                    return redirect()->route('getOwnerLandingPage', Auth::user()->company->id);
+                    return redirect()->route('getOwnerLandingPage', Crypt::encrypt(Auth::user()->company->id));
                 } else if (Auth()->user()->role == "manager") {
-                    return redirect()->route('getCompanyProducts', Auth::user()->branch->company_id);
+                    return redirect()->route('getCompanyProducts', Crypt::encrypt(Auth::user()->branch->company_id));
                 }
             } else {
                 return back()->with('warning', 'your account was disabled, contact admin');

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 
 class CompanyController extends Controller
@@ -83,6 +84,7 @@ class CompanyController extends Controller
     }
     public function getUpdateCompany($id)
     {
+        $id = Crypt::decrypt($id);
         $company = Company::where("id", $id)->first();
         if ($company) {
             return view('company.updateCompany', ['company' => $company]);
@@ -122,6 +124,7 @@ class CompanyController extends Controller
     }
     public function getChangeOwner($id)
     {
+        $id = Crypt::decrypt($id);
         return view('company.changeOwner', ['id' => $id]);
     }
 
@@ -209,6 +212,7 @@ class CompanyController extends Controller
     }
     public function getCompanyBranches($id)
     {
+        $id = Crypt::decrypt($id);
         $branches = Branch::where('company_id', $id)->get();
         if ($branches) {
             $company = company::where('id', $id)->first();
@@ -219,6 +223,7 @@ class CompanyController extends Controller
     }
     public function changeCompanyStatus($id)
     {
+        $id = Crypt::decrypt($id);
         $company = Company::where('id', $id)->first();
         if ($company) {
             if ($company->status == "active") {
@@ -239,6 +244,7 @@ class CompanyController extends Controller
 
     public function deleteCompany($id)
     {
+        $id = Crypt::decrypt($id);
         $company = Company::where("id", $id)->first();
         $branch = Branch::where("company_id", $id)->first();
         if ($branch) {

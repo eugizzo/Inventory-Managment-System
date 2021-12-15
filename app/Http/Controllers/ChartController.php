@@ -13,42 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class ChartController extends Controller
 {
-    //
-
-    // public function index()
-    // {
-    //     $products = Product::all();
-
-    //     $dataPoints = [];
-
-    //     foreach ($products as $product) {
-
-    //         $dataPoints[] = [
-    //             "name" => $product['name'],
-    //             "y" => floatval($product['purchasedQuantity'])
-    //         ];
-    //     }
-
-    //     return view("chart", [
-    //         "data" => json_encode($dataPoints)
-    //     ]);
-    //     $stockOut = DB::table("product_stock_out")
-    //     ->select("product_id" ,DB::raw('SUM(soldQuantity * unityPrice) as soldQuantity'),DB::raw("MONTH(created_at)"))
-    //     ->orderBy('created_at')
-    //     ->groupBy(DB::raw("product_id"))
-    //     ->groupBy(DB::raw("MONTH(created_at)"))
-    //     ->get();
-    //     return $stockOut;
-
-    //     $stockIn = DB::table("product_stock_in")
-    //     ->select("product_id" ,DB::raw('SUM(purchasedQuantity) as purchasedQuantity'),DB::raw("MONTH(created_at)"))
-    //     ->orderBy('created_at')
-    //     ->groupBy(DB::raw("product_id"))
-    //     ->groupBy(DB::raw("MONTH(created_at)"))
-    //     ->get();
-    //     return $stockIn;
-    //     // Order::select(\DB::raw('SUM(total) as total'));
-    // }
 
     public function index()
     {
@@ -79,17 +43,6 @@ class ChartController extends Controller
             )),
         ]);
     }
-
-    // public function __invoke()
-    // {
-    //     $sold = Product::where('id', 2)->pluck('soldQuantity')->first();
-    //     $remaining = Product::where('id', 2)->pluck('remainingQuantity')->first();
-    //     $chart = LarapexChart::setTitle('Your Todos Stats')
-    //         ->setLabels(['sold', 'remaining'])
-    //         ->setDataset([$sold, $remaining]);
-    //     return view('chart', compact('chart'));
-    // }
-
 
     public function productChart($id)
     {

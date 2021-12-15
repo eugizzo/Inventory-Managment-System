@@ -23,9 +23,9 @@
                          <div class="table-responsive">
                              <table class="table table-striped " id="mytable">
                                  <tr>
-                                    <th class="px-4 py-3 text-base font-bold">#</th>
+                                     <th class="px-4 py-3 text-base font-bold">#</th>
                                      <th class="px-4 py-3 text-base font-bold">First Name</th>
-                                     <th class="px-4 py-3 text-base font-bold" >Last Name</th>
+                                     <th class="px-4 py-3 text-base font-bold">Last Name</th>
                                      <th class="px-4 py-3 text-base font-bold">User Email</th>
                                      <th class="px-4 py-3 text-base font-bold">User Phone Number</th>
                                      <th class="px-4 py-3 text-base font-bold">User Gender</th>
@@ -41,7 +41,7 @@
                                  $i ++;
                                  @endphp
                                  <tr>
-                                 <td class="align-middle px-4 text-xl">
+                                     <td class="align-middle px-4 text-xl">
                                          {{$i}}
                                      </td>
                                      <td class="align-middle px-4 text-xl">
@@ -65,7 +65,7 @@
                                      <td class="align-middle px-4 text-xl">
                                          <div class="flex items-center space-x-4 text-xl text-white text-bold text-base">
 
-                                             <a href="{{route('changeUserStatus', $user->id)}}" @if( $user->status == 'active')
+                                             <a href="{{route('changeUserStatus', Crypt::encrypt($user->id))}}" @if( $user->status == 'active')
                                                  class="badge badge-success">{{ $user->status}}
                                                  @else
                                                  class="badge badge-danger">{{ $user->status}}
@@ -79,12 +79,12 @@
                                          <div class="dropdown">
                                              <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle">Options</a>
                                              <div class="dropdown-menu">
-                                                 <a href="{{route('getUpdateUser', $user->id)}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
+                                                 <a href="{{route('getUpdateUser', Crypt::encrypt($user->id))}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
                                              </div>
                                          </div>
                                      </td>
                                  </tr>
-                                 
+
                                  @empty
                                  <div class="alert alert-warning alert-dismissible" role="alert">
                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -99,12 +99,12 @@
              </div>
          </div>
          @endsection
-        
 
 
 
 
 
-      
+
+
 
          <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>

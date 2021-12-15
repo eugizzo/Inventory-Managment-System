@@ -15,12 +15,6 @@
                  @endforeach
                  <h4 class="text-4xl font-bold text-blue-600 font-italic px-8 py-12 ">List of Brand</h4>
                  <div class="card">
-                     <!-- <div class="card-header d-flex justify-content-between">
-                         <h4>List of Brands</h4> 
-                          <div style="float:right; position: relative;">
-                             <a style="align-items: right;" href="{{route('getAddBrand')}}" class="btn btn-outline-primary">Register Brand</a>
-                         </div> -->
-                     <!-- </div> -->
                      <div class="card-body p-0">
                          <div class="table-responsive">
                              <table class="table table-striped">
@@ -32,7 +26,7 @@
                                  </tr>
                                  @forelse ($brands as $brand)
                                  <tr>
-                                 <td class="align-middle px-4 text-2xl">
+                                     <td class="align-middle px-4 text-2xl">
                                          {{$brand->id}}
                                      </td>
                                      <td class="align-middle px-4 text-2xl">
@@ -45,9 +39,9 @@
                                          <div class="dropdown">
                                              <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle">Options</a>
                                              <div class="dropdown-menu">
-                                                 <a href="{{route('getUpdateBrand',$brand->id)}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
+                                                 <a href="{{route('getUpdateBrand',Crypt::encrypt($brand->id))}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
                                                  <div class="dropdown-divider"></div>
-                                                 <a href="{{route('deleteBrand',$brand->id)}}" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
+                                                 <a href="{{route('deleteBrand',Crypt::encrypt($brand->id))}}" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
                                                      Delete</a>
                                              </div>
                                          </div>
@@ -65,13 +59,13 @@
                      </div>
                  </div>
              </div>
-            </div>  
+         </div>
 
-            <div class="relative">
-  <div class="fixed bottom-48 right-48 ">
-  <a style="align-items: right;" href="{{route('getAddBrand')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-2 fixed "><i class="fa fa-plus" aria-hidden="true"></i> Add Brand</a>
-    </div>
-  <div>
+         <div class="relative">
+             <div class="fixed bottom-48 right-48 ">
+                 <a style="align-items: right;" href="{{route('getAddBrand')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-2 fixed "><i class="fa fa-plus" aria-hidden="true"></i> Add Brand</a>
+             </div>
+             <div>
 
-            
-          @endsection
+
+                 @endsection

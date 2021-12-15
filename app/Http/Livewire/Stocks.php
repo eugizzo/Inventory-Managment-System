@@ -8,7 +8,7 @@ use Livewire\Component;
 use App\Models\Stock;
 use App\Models\StockIn;
 use App\Models\StockOut;
-
+use Illuminate\Support\Facades\Crypt;
 
 class Stocks extends Component
 {
@@ -95,7 +95,7 @@ class Stocks extends Component
                     ]);
                 }
             }
-            return redirect()->route('getStock', Auth::user()->branch->id)->with('success', 'stock registered successfully');
+            return redirect()->route('getStock', Crypt::encrypt(Auth::user()->branch->id))->with('success', 'stock registered successfully');
         } else {
             return redirect()->back()->with('warning', 'no stock to register');
         }

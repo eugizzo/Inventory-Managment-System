@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -36,6 +37,7 @@ class CategoryController extends Controller
 
     public function getUpdateCategory($id)
     {
+        $id = Crypt::decrypt($id);
         $category = Category::where("id", $id)->first();
         if ($category) {
             return view('category.updateCategory', ['category' => $category]);
@@ -75,6 +77,7 @@ class CategoryController extends Controller
 
     public function deleteCategory($id)
     {
+        $id = Crypt::decrypt($id);
         $category = Category::where("id", $id)->first();
         if ($category) {
             $product = Product::where("category_id", $id)->first();

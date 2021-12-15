@@ -39,7 +39,7 @@
                                          {{$branch->name}}
                                      </td>
                                      <td class="align-middle">
-                                         <a href="{{route('changeBranchStatus',$branch->id)}}" @if($branch->status == 'active')
+                                         <a href="{{route('changeBranchStatus',Crypt::encrypt($branch->id))}}" @if($branch->status == 'active')
                                              class="badge badge-success">{{$branch->status}}
                                              @else
                                              class="badge badge-danger">{{$branch->status}}
@@ -67,7 +67,7 @@
                                      <td class="align-middle">
                                          <div class="flex items-center space-x-4 text-sm">
 
-                                             <a href="{{route('changeUserStatus',$branch->user->id)}}" @if($branch->user->status == 'active')
+                                             <a href="{{route('changeUserStatus',Crypt::encrypt($branch->user->id))}}" @if($branch->user->status == 'active')
                                                  class="badge badge-success">{{$branch->user->status}}
                                                  @else
                                                  class="badge badge-danger">{{$branch->user->status}}
@@ -84,12 +84,11 @@
                                              <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle">Options</a>
                                              <div class="dropdown-menu">
                                                  @if(Auth::user()->role == 'owner')
-                                                 <a href="{{route('getStock',$branch->id)}}" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View Stock</a>
-                                                 <a href="{{route('getChangeManager',$branch->id)}}" class="dropdown-item has-icon"><i class="fas fa-edit"></i> Change Manager</a>
+                                                 <a href="{{route('getStock',Crypt::encrypt($branch->id))}}" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View Stock</a>
+                                                 <a href="{{route('getChangeManager',Crypt::encrypt($branch->id))}}" class="dropdown-item has-icon"><i class="fas fa-edit"></i> Change Manager</a>
+                                                 <a href="{{route('getUpdateBranch',Crypt::encrypt($branch->id))}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
                                                  @endif
-                                                 <a href="{{route('getUpdateBranch',$branch->id)}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
-                                                 <!-- <div class="dropdown-divider"></div> -->
-                                                 <a href="{{route('deleteBranch',$branch->id)}}" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
+                                                 <a href="{{route('deleteBranch',Crypt::encrypt($branch->id))}}" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
                                                      Delete</a>
                                              </div>
                                          </div>
