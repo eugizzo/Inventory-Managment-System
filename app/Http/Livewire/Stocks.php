@@ -100,9 +100,6 @@ class Stocks extends Component
             return redirect()->back()->with('warning', 'no stock to register');
         }
     }
-
-
-
     public function render()
     {
         return view('livewire.stocks');

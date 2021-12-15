@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class StockInController extends Controller
 {
-
-
-
-
     public function getStockOut($id)
     {
         $stock = StockIn::where("id", $id)->first();
@@ -49,15 +45,6 @@ class StockInController extends Controller
         $stocks = Stock::where('branch_id', $id)->get();
         return view('stockIn.stocks', ['stocks' => $stocks]);
     }
-    function getProductStockIn($id)
-    {
-        $product = Product::where('id', $id)->first();
-        if ($product) {
-            return view('stockIn.productStockIn', ['product' => $product]);
-        }
-        return redirect()->back()->with('warning', 'product not found');
-    }
-
     function getBranchStockIn($id)
     {
         $stockIn = StockIn::where('branch_id', $id)->get();

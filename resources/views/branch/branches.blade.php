@@ -15,16 +15,9 @@
                  @endforeach
 
                  <div class="text-4xl font-bold text-blue-600 font-italic px-8 py-12">
-                         <h4>{{$company->name}} Company</h4>
+                     <h4>{{$company->name}} Company</h4>
                  </div>
                  <div class="card">
-
-                     <!-- <div class="card-header d-flex justify-content-between">
-                         <h4>{{$company->name}} Branches</h4> 
-                          <div style="float:right; position: relative;">
-                             <a style="align-items: right;" href="{{route('getAddBranch')}}" class="btn btn-outline-primary">Register Branch</a>
-                         </div> 
-                     </div> -->
                      <div class="card-body p-0">
                          <div class="table-responsive">
                              <table class="table table-striped" id="table-1">
@@ -90,8 +83,10 @@
                                          <div class="dropdown">
                                              <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle">Options</a>
                                              <div class="dropdown-menu">
+                                                 @if(Auth::user()->role == 'owner')
                                                  <a href="{{route('getStock',$branch->id)}}" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View Stock</a>
                                                  <a href="{{route('getChangeManager',$branch->id)}}" class="dropdown-item has-icon"><i class="fas fa-edit"></i> Change Manager</a>
+                                                 @endif
                                                  <a href="{{route('getUpdateBranch',$branch->id)}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
                                                  <!-- <div class="dropdown-divider"></div> -->
                                                  <a href="{{route('deleteBranch',$branch->id)}}" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
@@ -115,12 +110,12 @@
          </div>
 
 
-           
 
-
-            <div class="relative">
-  <div class="fixed bottom-48 right-48 ">
-  <a style="align-items: right;" href="{{route('getAddBranch')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-2 fixed "><i class="fa fa-plus" aria-hidden="true"></i> Add Branch</a>
-    </div>
-  <div>
-         @endsection
+         @if(Auth::user()->role == 'owner')
+         <div class="relative">
+             <div class="fixed bottom-48 right-48 ">
+                 <a style="align-items: right;" href="{{route('getAddBranch')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-2 fixed "><i class="fa fa-plus" aria-hidden="true"></i> Add Branch</a>
+             </div>
+             <div>
+                 @endif
+                 @endsection
