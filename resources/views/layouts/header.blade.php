@@ -43,23 +43,6 @@
 
 <body>
     @livewireScripts
-
-    <style>
-        .sidebar ul li .ui-nav-active span {
-            background: black;
-            border: yellow;
-            line-height: 90px;
-            border-bottom: none;
-        }
-
-        .sidebar ul li .ui-nav-active a {
-            color: yellow;
-        }
-
-        .sidebar ul li .ui-nav-active span {
-            color: #1e1e1e;
-        }
-    </style>
     <div class="loader"></div>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
@@ -102,14 +85,9 @@
             </nav>
 
 
-            <div class="main-sidebar sidebar-style-2 py-4 sidebar ">
+            <div class="main-sidebar sidebar-style-2 py-4  ">
                 <aside id="sidebar-wrapper">
-                    <!-- <div class="sidebar-brand text-xl px-4 w"> -->
-                    <!-- <a href="?"> <img alt="image" src="/assets/img/logo1.jpg" class="header-logo "/>  -->
-                    <!-- <span class="logo-name">I_M_S</span> -->
 
-                    <!-- </a> -->
-                    <!-- </div> -->
 
                     <div class="flex">
                         <div>
@@ -132,45 +110,45 @@
 
                         <!-- /// -->
                         @if(Auth::user()->role == 'admin')
-                        <li class="dropdown active">
-                            <a href="{{route('getLandingPage')}}" class="nav-link"><i class="fa fa-tachometer-alt" aria-hidden="true"></i><span class=" hover:text-blue-600">Dashboard</span></a>
+                        <li class="dropdown {{Request::is('getLandingPage*')?'active':''}}">
+                            <a href="{{route('getLandingPage')}}" class="nav-link"><i class="fa fa-tachometer-alt" aria-hidden="true"></i><span class="">Dashboard</span></a>
                         </li>
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getUsers*')?'active':''}}">
                             <!-- ADDDDDD -->
-                            <a href="{{route('getUsers')}}" class="nav-link"><i class="fa fa-user-alt" aria-hidden="true"></i><span class="text-blue-600">Users</span></a>
+                            <a href="{{route('getUsers')}}" class="nav-link"><i class="fa fa-user-alt" aria-hidden="true"></i><span class="">Users</span></a>
                         </li>
 
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getAllCompanies*')?'active':''}}">
                             <!-- ADDDDDD -->
-                            <a href="{{route('getAllCompanies')}}" class="nav-link"><i data-feather="layout"></i><span class="text-blue-600">Companies</span></a>
+                            <a href="{{route('getAllCompanies')}}" class="nav-link"><i data-feather="layout"></i><span class="">Companies</span></a>
                         </li>
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getAllCategories*')?'active':''}}">
                             <!-- ADDDDDD -->
-                            <a href="{{route('getAllCategories')}}" class="nav-link"><i data-feather="command"></i><span class="text-blue-600">Categories</span></a>
+                            <a href="{{route('getAllCategories')}}" class="nav-link"><i data-feather="command"></i><span class="">Categories</span></a>
                         </li>
 
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getAllBrands*')?'active':''}}">
                             <!-- ADDDDDD -->
                             <a href="{{route('getAllBrands')}}" class="nav-link">
-                                <ion-icon name="clipboard" class=""></ion-icon><span class="text-blue-600 px-4">Brands</span>
+                                <ion-icon name="clipboard" class=""></ion-icon><span class=" px-4">Brands</span>
                             </a>
                         </li>
                         l @endif
                         @if(Auth::user()->role == 'owner')
-                        <li class="dropdown">
+                        <li class="dropdown {{Request::is('getOwnerLandingPage*')?'active':''}}">
                             <a href="{{route('getOwnerLandingPage',Crypt::encrypt(Auth::user()->company->id))}}" class="nav-link"><i class="fa fa-tachometer-alt" aria-hidden="true"></i><span class=" ">Dashboard</span></a>
                         </li>
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getCompanyBranches*')?'active':''}}">
                             <a href="{{route('getCompanyBranches',Crypt::encrypt(Auth::user()->company->id))}}" class="nav-link">
-                                <ion-icon name="md-git-branch" class=" text-blue-900 px-1 w-7 h-7"></ion-icon> <span class="text-blue-600 px-4">Branches</span>
+                                <ion-icon name="md-git-branch" class=" text-blue-900 px-1 w-7 h-7"></ion-icon> <span class=" px-4">Branches</span>
                             </a>
                         </li>
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getAllCategories*')?'active':''}} ">
                             <!-- ADDDDDD -->
                             <a href="{{route('getAllCategories')}}" class="nav-link bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"><i data-feather="command" class="w-7 h-7 text-blue-900"></i><span class=" px-2  ">Categories</span></a>
                         </li>
 
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getAllBrands*')?'active':''}}">
                             <!-- ADDDDDD -->
                             <a href="{{route('getAllBrands')}}" class="nav-link">
                                 <ion-icon name="clipboard" class="p-1 w-7 h-7 text-blue-900"></ion-icon><span class=" px-4">Brands</span>
@@ -178,37 +156,37 @@
                         </li>
 
 
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getCompanyProducts*')?'active':''}}">
                             <a href="{{route('getCompanyProducts',Crypt::encrypt(Auth::user()->company->id))}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="">Products</span></a>
                         </li>
 
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('profitChart*')?'active':''}} ">
                             <a href="{{route('profitChart')}}" class="nav-link"><i class="fa fa-chart-bar" aria-hidden="true"></i><span class="">Charts</span></a>
                         </li>
 
                         @endif
 
                         @if(Auth::user()->role == 'manager')
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getCompanyProducts*')?'active':''}}">
                             <a href="{{route('getCompanyProducts',Crypt::encrypt(Auth::user()->branch->company_id))}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="">Products</span></a>
                         </li>
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getAddManyStocks*')?'active':''}}">
                             <a href="{{route('getAddManyStocks')}}" class="nav-link"><i class="fa fa-plus"></i><span class=" style">Add a stock</span></a>
                         </li>
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getStock*')?'active':''}}">
                             <a href="{{route('getStock',Crypt::encrypt(Auth::user()->branch->id))}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="">View Stock</span></a>
 
                         </li>
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getBranchStockIn*')?'active':''}}">
                             <a href="{{route('getBranchStockIn',Crypt::encrypt(Auth::user()->branch->id))}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="">View StockIn history</span></a>
                         </li>
-                        <li class="dropdown style">
+                        <li class="dropdown {{Request::is('getSellStocks*')?'active':''}}">
                             <a href="{{route('getSellStocks',Crypt::encrypt(Auth::user()->branch->id))}}" class="nav-link"><i data-feather="monitor"></i><span class="">Make Sales</span></a>
                         </li>
-                        <li class="dropdown ">
+                        <li class="dropdown {{Request::is('getBranchStockOut*')?'active':''}} ">
                             <a href="{{route('getBranchStockOut',Crypt::encrypt(Auth::user()->branch->id))}}" class="nav-link"><i class="fa fa-chart-line" aria-hidden="true"></i><span class="" onclick="switchColors(this);">Sales</span></a>
                         </li>
-                        <li class="dropdown style">
+                        <li class="dropdown {{Request::is('SalesPurchaseChart*')?'active':''}}">
                             <a href="{{route('SalesPurchaseChart')}}" class="nav-link"><i class="fa fa-chart-bar" aria-hidden="true"></i><span class="" onclick="switchColors(this);">Statistics</span></a>
                         </li>
                         @endif

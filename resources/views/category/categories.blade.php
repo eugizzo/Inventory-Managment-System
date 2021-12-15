@@ -72,22 +72,10 @@
                 </div>
             </div>
         </div>
+        <div class="fixed bottom-48 right-48 ">
+            <a style="align-items: right;" href="{{route('getAddCategory')}}')}}" class="animate-pulse  py-8 bg-blue-600 text-xl text-white text-red-100 rounded-full px-8 fixed text-blue-600 hover:text-blue-700 transition duration-150 ease-in-out" data-bs-toggle="tooltip" data-bs-placement="left" title="Please add category !"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 
-
-
-
-        <div class="relative">
-            <div class="fixed bottom-48 right-48 ">
-                <a style="align-items: right;" href="{{route('getAddCategory')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-2 fixed "><i class="fa fa-plus" aria-hidden="true"></i> Add Category</a>
-            </div>
-            <div>
-
-                @endsection
-
-                <script type="text/javascript">
-                    $(document).ready(function() {
-                        $('#example').DataTable();
-                    });
-                </script>
-                <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-                <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        </div>
+        @endsection
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
