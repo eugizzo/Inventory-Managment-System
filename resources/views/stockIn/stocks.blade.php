@@ -72,8 +72,10 @@
              </div>
          </div>
 
+        @if(Auth::user()->role == 'manager')
          <div class="relative">
-  <div class="fixed bottom-48 right-48 ">
-  <a style="align-items: right;" href="{{route('getAddManyStocks')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-6 fixed "><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
-    </div>
-         @endsection
+             <div class="fixed bottom-48 right-48 ">
+                 <a style="align-items: right;" href="{{route('getAddManyStocks')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-6 fixed "><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+             </div>
+             @endif
+             @endsection
