@@ -117,12 +117,12 @@
              </div>
          
 
-                <div class="  relative">
-                    <div style="float:right; position: relative; " class="relative animate-pulse">
-                        <a style="align-items: right;" href="{{route('getAddCompany')}}" class="py-8 bg-blue-600 text-xl text-white rounded-full px-2 fixed bottom-24 right-12"><ion-icon name="add" class="mt-2"></ion-icon>Add Company</a>
-                    </div>
 
-                </div>
+                <div class="fixed bottom-48 right-48 ">
+  <a style="align-items: right;" href="{{route('getAddCompany')}}" class="animate-pulse  py-8 bg-blue-600 text-xl text-white text-red-100 rounded-full px-8 fixed text-blue-600 hover:text-blue-700 transition duration-150 ease-in-out"
+      data-bs-toggle="tooltip" data-bs-placement="left" title="Please add company !"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+ 
+</div>
 
 
          <script type="text/javascript">

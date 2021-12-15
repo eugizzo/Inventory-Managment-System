@@ -1,5 +1,5 @@
  @extends('layouts.header')
-
+ <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
  @section('content')
  <div class="main-content">
      <section class="section">
@@ -74,6 +74,18 @@
 
          <div class="relative">
   <div class="fixed bottom-48 right-48 ">
-  <a style="align-items: right;" href="{{route('getAddManyStocks')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-6 fixed "><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
-    </div>
+  <a style="align-items: right;" href="{{route('getAddManyStocks')}}" class="animate-pulse  py-8 bg-blue-600 text-xl text-white text-red-100 rounded-full px-8 fixed text-blue-600 hover:text-blue-700 transition duration-150 ease-in-out"
+      data-bs-toggle="tooltip" data-bs-placement="left" title="Please add product in Stock !"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+ 
+</div>
+
+<script type="text/javascript">
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl);
+  });
+</script>
+
          @endsection

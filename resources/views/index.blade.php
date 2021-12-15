@@ -144,7 +144,7 @@
                         <img class="px-8 py-2"src="assetss/images/line-dec.png" alt="">
                        </div> 
                     
-                </div><p class="py-2 text-xl">Inventory management refers to the process of ordering, storing, using, and selling a company's inventory. This includes the management 
+                </div><p class="py-2 text-xl">Inventory management refers to the process of ordering, storing, and selling a company's inventory. This includes the management 
                   <span>of raw materials, components, and finished products, as well as warehousing and processing of such items.</span></p>
             </div>
             <div class="row" id="tabs">
