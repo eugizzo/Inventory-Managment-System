@@ -29,22 +29,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-// Route::get('/', [ChartController::class, ('__invoke')])->name('index');
-
-
-
-
 
 //auth
 Route::get('getLogin', [AuthController::class, ('getLogin')])->name('getLogin');
 Route::post('checkLogin', [AuthController::class, ('checkLogin')])->name('checkLogin');
 Route::post('logout', [AuthController::class, ('logout')])->name('logout');
-
-Route::get('invoice/{id}', [StockInController::class, ('invoice')])->name('invoice');
-Route::get('generatePdf', [ExportController::class, ('generatePdf')])->name('generatePdf');
-
-
-
 
 
 
@@ -90,7 +79,6 @@ Route::group(['middleware' => ['OwnerManager']], function () {
     Route::get('getCompanyProducts/{id}', [ProductController::class, ('getCompanyProducts')])->name('getCompanyProducts');
     Route::get('getAllProducts', [ProductController::class, ('getAllProducts')])->name('getAllProducts');
     Route::get('getStock/{id}', [StockInController::class, ('getStock')])->name('getStock');
-    Route::get('getProductStockIn/{id}', [StockInController::class, ('getProductStockIn')])->name('getProductStockIn');
     Route::get('getBranchStockIn/{id}', [StockInController::class, ('getBranchStockIn')])->name('getBranchStockIn');
     Route::get('getBranchStockOut/{id}', [StockInController::class, ('getBranchStockOut')])->name('getBranchStockOut');
     Route::get('getAllBranchStockOut/{id}', [StockInController::class, ('getAllBranchStockOut')])->name('getAllBranchStockOut');
@@ -116,6 +104,7 @@ Route::group(['middleware' => ['manager']], function () {
     Route::get('getAddManyStocks', [StockInController::class, ('getAddManyStocks')])->name('getAddManyStocks');
     Route::get('getSellStocks/{id}', [StockInController::class, ('getSellStocks')])->name('getSellStocks');
     Route::get('SalesPurchaseChart', [BranchChartController::class, ('SalesPurchaseChart')])->name('SalesPurchaseChart');
+    Route::get('invoice/{id}', [StockInController::class, ('invoice')])->name('invoice');
 });
 Route::group(['middleware' => ['owner']], function () {
     Route::get('getAddBranch', [BranchController::class, ('getAddBranch')])->name('getAddBranch');

@@ -85,6 +85,9 @@
             }],
             xaxis: {
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                title: {
+                    text: 'Months'
+                },
                 labels: {
                     style: {
                         colors: '#9aa0ac',
@@ -93,7 +96,7 @@
             },
             yaxis: {
                 title: {
-                    text: 'Rwf'
+                    text: 'Amount in Rwf'
                 },
                 labels: {
                     style: {
@@ -116,78 +119,6 @@
 
         var chart = new ApexCharts(
             document.querySelector("#chart"),
-            options
-        );
-
-        chart.render();
-
-
-    }
-
-    function chart2() {
-        var options = {
-            chart: {
-                height: 350,
-                type: 'bar',
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: true,
-                    endingShape: 'rounded',
-                    columnWidth: '55%',
-                },
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            series: [{
-                name: 'Purchased Quantity',
-                data: <?= $purchased ?>
-            }, {
-                name: 'Sold Quantity',
-                data: <?= $sold ?>
-            }, {
-                name: 'Remaining Quantity',
-                data: <?= $remaining ?>
-            }],
-            xaxis: {
-                categories: <?= $name ?>,
-                labels: {
-                    style: {
-                        colors: '#9aa0ac',
-                    }
-                }
-            },
-            yaxis: {
-                title: {
-                    text: 'Quantity'
-                },
-                labels: {
-                    style: {
-                        color: '#9aa0ac',
-                    }
-                }
-            },
-            fill: {
-                opacity: 1
-
-            },
-            tooltip: {
-                y: {
-                    formatter: function(val) {
-                        return val
-                    }
-                }
-            }
-        }
-
-        var chart = new ApexCharts(
-            document.querySelector("#chart2"),
             options
         );
 
@@ -233,6 +164,9 @@
             }],
             xaxis: {
                 categories: <?= $productName ?>,
+                title: {
+                    text: 'Amount in Rwf'
+                },
                 labels: {
                     style: {
                         colors: '#9aa0ac',
@@ -241,7 +175,7 @@
             },
             yaxis: {
                 title: {
-                    text: 'Rwf'
+                    text: 'Product Names'
                 },
                 labels: {
                     style: {
@@ -264,6 +198,82 @@
 
         var chart = new ApexCharts(
             document.querySelector("#chart3"),
+            options
+        );
+
+        chart.render();
+
+
+    }
+
+    function chart2() {
+        var options = {
+            chart: {
+                height: 350,
+                type: 'bar',
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                    endingShape: 'rounded',
+                    columnWidth: '55%',
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            series: [{
+                name: 'Purchases Quantity',
+
+                data: <?= $purchased ?>
+            }, {
+                name: 'Sales Quantity',
+                data: <?= $sold ?>
+            }, {
+                name: 'Remaning Quantity',
+                data: <?= $remaining ?>
+            }],
+            xaxis: {
+                categories: <?= $name ?>,
+                title: {
+                    text: 'Quantity'
+                },
+                labels: {
+                    style: {
+                        colors: '#9aa0ac',
+                    }
+                }
+            },
+            yaxis: {
+                title: {
+                    text: 'Product Names'
+                },
+                labels: {
+                    style: {
+                        color: '#9aa0ac',
+                    }
+                }
+            },
+            fill: {
+                opacity: 1
+
+            },
+            tooltip: {
+                y: {
+                    formatter: function(val) {
+                        return val
+                    }
+                }
+            }
+        }
+
+        var chart = new ApexCharts(
+            document.querySelector("#chart2"),
             options
         );
 
