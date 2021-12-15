@@ -18,7 +18,8 @@
                      <div class="card-body p-0">
                          <div class="table-responsive">
                              <table class="table table-striped">
-                                 <tr>
+                                 <tr class="">
+                                     <th class="px-4 py-3 text-2xl">#</th>
                                      <th class="px-4 py-3 text-2xl">Product Name</th>
                                      <th class="px-4 py-3 text-2xl">Purchased Quantity</th>
                                      <th class="px-4 py-3 text-2xl">Remaining Quantity</th>
@@ -27,6 +28,9 @@
                                  </tr>
                                  @forelse ($stocks as $stock)
                                  <tr>
+                                     <td class="align-middle px-4 text-xl">
+                                         {{$stock->product->id}}
+                                     </td>
                                      <td class="align-middle px-4 text-xl">
                                          {{$stock->product->name}}
                                      </td>
@@ -59,7 +63,7 @@
          @if(Auth::user()->role == 'manager')
          <div class="relative">
              <div class="fixed bottom-48 right-48 ">
-                 <a style="align-items: right;" href="{{route('getAddManyStocks')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-2 fixed "><i class="fa fa-plus" aria-hidden="true"></i> Add Stocks</a>
+                 <a style="align-items: right;" href="{{route('getAddManyStocks')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-6 fixed "><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
              </div>
              @endif
              @endsection

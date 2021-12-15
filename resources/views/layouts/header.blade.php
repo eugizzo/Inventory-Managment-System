@@ -37,10 +37,27 @@
     <link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    
+    
 </head>
 
 <body>
     @livewireScripts
+
+    <style>
+ .sidebar ul li .ui-nav-active span {
+  background: black;
+  border: yellow;
+  line-height: 90px;
+  border-bottom: none;
+}
+.sidebar ul li .ui-nav-active a {
+  color: yellow;
+}
+.sidebar ul li .ui-nav-active span {
+  color: #1e1e1e;
+}
+    </style>
     <div class="loader"></div>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
@@ -83,7 +100,7 @@
             </nav>
 
 
-            <div class="main-sidebar sidebar-style-2 py-4">
+            <div class="main-sidebar sidebar-style-2 py-4 sidebar ">
                 <aside id="sidebar-wrapper">
                     <!-- <div class="sidebar-brand text-xl px-4 w"> -->
                     <!-- <a href="?"> <img alt="image" src="/assets/img/logo1.jpg" class="header-logo "/>  -->
@@ -139,7 +156,7 @@
                         l @endif
                         @if(Auth::user()->role == 'owner')
                         <li class="dropdown">
-                            <a href="{{route('getOwnerLandingPage',Auth::user()->company->id)}}" class="nav-link"><i class="fa fa-tachometer-alt" aria-hidden="true"></i><span class=" text-blue-600">Dashboard</span></a>
+                            <a href="{{route('getOwnerLandingPage',Auth::user()->company->id)}}" class="nav-link"><i class="fa fa-tachometer-alt" aria-hidden="true"></i><span class=" ">Dashboard</span></a>
                         </li>
                         <li class="dropdown ">
                             <a href="{{route('getCompanyBranches',Auth::user()->company->id)}}" class="nav-link">
@@ -148,49 +165,49 @@
                         </li>
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
-                            <a href="{{route('getAllCategories')}}" class="nav-link bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"><i data-feather="command" class="w-7 h-7 text-blue-900"></i><span class="text-blue-600 px-2  ">Categories</span></a>
+                            <a href="{{route('getAllCategories')}}" class="nav-link bg-violet-500 hover:bg-violet-400 active:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300"><i data-feather="command" class="w-7 h-7 text-blue-900"></i><span class=" px-2  ">Categories</span></a>
                         </li>
 
                         <li class="dropdown ">
                             <!-- ADDDDDD -->
                             <a href="{{route('getAllBrands')}}" class="nav-link">
-                                <ion-icon name="clipboard" class="p-1 w-7 h-7 text-blue-900"></ion-icon><span class="text-blue-600 px-4">Brands</span>
+                                <ion-icon name="clipboard" class="p-1 w-7 h-7 text-blue-900"></ion-icon><span class=" px-4">Brands</span>
                             </a>
                         </li>
 
 
                         <li class="dropdown ">
-                            <a href="{{route('getCompanyProducts',Auth::user()->company->id)}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="text-blue-600">Products</span></a>
+                            <a href="{{route('getCompanyProducts',Auth::user()->company->id)}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="">Products</span></a>
                         </li>
 
                         <li class="dropdown ">
-                            <a href="{{route('profitChart')}}" class="nav-link"><i class="fa fa-chart-bar" aria-hidden="true"></i><span class="text-blue-600">Charts</span></a>
+                            <a href="{{route('profitChart')}}" class="nav-link"><i class="fa fa-chart-bar" aria-hidden="true"></i><span class="">Charts</span></a>
                         </li>
 
                         @endif
 
                         @if(Auth::user()->role == 'manager')
                         <li class="dropdown ">
-                            <a href="{{route('getCompanyProducts',Auth::user()->branch->company_id)}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="text-blue-600">Products</span></a>
+                            <a href="{{route('getCompanyProducts',Auth::user()->branch->company_id)}}" class="nav-link"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="">Products</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getAddManyStocks')}}" class="nav-link"><i class="fa fa-plus"></i><span class="text-blue-600">Add a stock</span></a>
+                            <a href="{{route('getAddManyStocks')}}" class="nav-link"><i class="fa fa-plus"></i><span class=" style">Add a stock</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getStock',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="text-blue-600">View Stock</span></a>
+                            <a href="{{route('getStock',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="">View Stock</span></a>
 
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getBranchStockIn',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="text-blue-600">View StockIn history</span></a>
+                            <a href="{{route('getBranchStockIn',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-eye" aria-hidden="true"></i><span class="">View StockIn history</span></a>
+                        </li>
+                        <li class="dropdown style">
+                            <a href="{{route('getSellStocks',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="">Make Sales</span></a>
                         </li>
                         <li class="dropdown ">
-                            <a href="{{route('getSellStocks',Auth::user()->branch->id)}}" class="nav-link"><i data-feather="monitor"></i><span class="text-blue-600">Make Sales</span></a>
+                            <a  href="{{route('getBranchStockOut',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-chart-line" aria-hidden="true"></i><span class="" onclick="switchColors(this);">Sales</span></a>
                         </li>
-                        <li class="dropdown ">
-                            <a href="{{route('getBranchStockOut',Auth::user()->branch->id)}}" class="nav-link"><i class="fa fa-chart-line" aria-hidden="true"></i><span class="text-blue-600">Sales</span></a>
-                        </li>
-                        <li class="dropdown ">
-                            <a href="{{route('SalesPurchaseChart')}}" class="nav-link"><i class="fa fa-chart-bar" aria-hidden="true"></i><span class="text-blue-600">Statistics</span></a>
+                        <li class="dropdown style">
+                            <a  href="{{route('SalesPurchaseChart')}}" class="nav-link"><i class="fa fa-chart-bar" aria-hidden="true"></i><span class="" onclick="switchColors(this);" >Statistics</span></a>
                         </li>
                         @endif
                     </ul>
@@ -205,6 +222,24 @@
     </div>
     </div>
 
+    <script>
+  function switchColors(element)  
+{  
+links=document.getElementsByTagName("a") ;  
+for (var i = 1 ; i < links.length ; i ++)  
+links.item(i).style.color = 'black' ;  
+element.style.color='blue' ;  
+ 
+
+}   
+
+
+
+</script>
+
+
+
+
 
     <!-- General JS Scripts -->
     <script src="/assets/js/app.min.js"></script>
@@ -218,16 +253,7 @@
     <script src="/assets/js/custom.js"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     @stack('scripts')
-    <script>
-        const currentLocation = location.href;
-        const menuItem = document.querySelectionAll('a');
-        const menuLength = menuItem.length
-        for (let i = 0; i < menuLength; i++) {
-            if (menuItem[i].href === currentLocation) {
-                menuItem[i].class = "active"
-            }
-        }
-    </script>
+   
 </body>
 
 

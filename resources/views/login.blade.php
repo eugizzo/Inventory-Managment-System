@@ -18,16 +18,18 @@
     <link href="/assetss/fontawesome/css/solid.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="">
     <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
         <div class="container">
-            <div class="card login-card">
+            <div class="card login-card rounded-md">
                 <div class="row no-gutters">
-                    
+                <div class="col-md-1" style="background-color: #d0d0ce;"></div>
+
+                <div></div>
                     <div class="col-md-5">
                         <img src="https://i1.wp.com/www.pival.com/wp-content/uploads/2017/08/inventory-management-system.jpg?fit=1500%2C1000&ssl=1" alt="login" class="login-card-img">
-                    </div>
-                    <div class="col-md-7">
+                     </div>
+                    <div class="col-sm-5 rounded-md" >
                         <div class="card-body">
                             <!-- <div class="brand-wrapper">
                                 <img src="/login/assets/images/logo.svg" alt="logo" class="logo">
@@ -70,6 +72,8 @@
                             </nav>
                         </div>
                     </div>
+                    <div class="col-md-1" style="background-color: #d0d0ce;"></div>
+
                 </div>
             </div>
         </div>
