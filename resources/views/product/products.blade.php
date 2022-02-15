@@ -14,11 +14,11 @@
                  </div>
                  @endif
                  @endforeach
-                 <h4>{{$company }} Company</h4>
+                 <h4 class="text-4xl font-bold text-blue-600 font-italic px-8 py-12">{{$company }} Company</h4>
                  <div class="card">
                      <div class="card-body p-0">
                          <div class="table-responsive">
-                             <table class="table table-striped" id="table-1">
+                             <table class="table table-striped" id="example">
                                  <tr>
                                      <th class="px-4 py-3 text-xl">#</th>
                                      <th class="px-4 py-3 text-xl">Product Name</th>
@@ -89,12 +89,15 @@
          </div>
          @if(Auth::user()->role =="owner")
 
-
-
-         <div class="relative">
              <div class="fixed bottom-48 right-48 ">
-                 <a style="align-items: right;" href="{{route('getAddProduct')}}" class="animate-pulse px-12 py-8 bg-blue-600 text-xl text-white rounded-full px-2 fixed "><i class="fa fa-plus" aria-hidden="true"></i> Add Product</a>
+                 <a style="align-items: right;" href="{{route('getAddProduct')}}" class="animate-pulse  py-8 bg-blue-600 text-xl text-white text-red-100 rounded-full px-8 fixed text-blue-600 hover:text-blue-700 transition duration-150 ease-in-out" data-bs-toggle="tooltip" data-bs-placement="left" title="add new Product"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+
              </div>
-             <div>
                  @endif
                  @endsection
+                 <script>
+            $(document).ready(function () {
+                $('#dataTable').DataTable();
+
+            });
+        </script>
